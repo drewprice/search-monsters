@@ -1,5 +1,5 @@
-I'm the index template!
+<h1>Magic Pokémon Stuff?!</h1>
 
 <%= render 'form' %>
 
-<ul><%= render @posts.reverse %></ul>
+<table id="posts"><%= render @posts.sort_by(&:created_at).reverse %></table>

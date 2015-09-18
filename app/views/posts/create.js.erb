@@ -1,3 +1,4 @@
+document.getElementById('new_post').reset();
 
-$('ul').prepend('<%= j render @post %>')
-document.getElementById('new_post').reset()
+$('#posts').prepend('<%= j render @post %>');
+$('#post-<%= @post.id %>').hide().fadeIn(3000);

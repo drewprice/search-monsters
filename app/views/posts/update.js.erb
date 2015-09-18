@@ -1,0 +1,6 @@
+var $form = $('#edit_post_<%= @post.id %>');
+
+$form.fadeOut(1500, function() {
+  $form.replaceWith("<%= j render partial: 'post', locals: { post: @post } %>")
+  $('#post-<%= @post.id %>').hide().fadeIn(1500);
+});
