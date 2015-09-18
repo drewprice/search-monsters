@@ -1,1 +1,6 @@
-alert('You did it! Great job!!!@!@31')
+var $row = $('#post-<%= @post.id %>')
+
+$row.fadeOut(1500, function() {
+  $row.replaceWith("<%= j render 'form' %>");
+  $('#edit_post_<%= @post.id %>').hide().fadeIn(1500);
+});

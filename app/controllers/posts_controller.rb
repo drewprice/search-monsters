@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :assign_post, only: [:edit, :destroy, :update]
 
   def index
     @post = Post.new
@@ -13,9 +14,12 @@ class PostsController < ApplicationController
   def edit
   end
 
+  def update
+    @post.update(post_params)
+  end
+
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
   end
 
@@ -23,5 +27,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:body)
+  end
+
+  def assign_post
+    @post = Post.find(params[:id])
   end
 end
