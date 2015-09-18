@@ -6,10 +6,17 @@ class PostsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @post = Post.new(post_params)
     @post.save
-    # redirect_to root_path
+  end
+
+  def edit
+  end
+
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
   end
 
   private

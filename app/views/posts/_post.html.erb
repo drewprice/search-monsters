@@ -1,1 +1,11 @@
-<li><%= post.body %></li>
+<tr id="post-<%= post.id %>">
+  <td>
+    <%= post.body %>
+  </td>
+  <td>
+    <%= link_to 'Edit', edit_post_path(post), remote: true %>
+  </td>
+  <td>
+    <%= link_to 'Delete', destroy_post_path(post), method: 'delete', remote: true %>
+  </td>
+</tr>
