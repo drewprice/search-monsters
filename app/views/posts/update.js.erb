@@ -1,6 +1,16 @@
-var $form = $('#edit_post_<%= @post.id %>');
+$('#edit_post_<%= @post.id %>').fadeOut(function() {
+  $(this)
+    .replaceWith('<%= j render partial: "post", locals: { post: @post } %>');
 
-$form.fadeOut(1500, function() {
-  $form.replaceWith("<%= j render partial: 'post', locals: { post: @post } %>")
-  $('#post-<%= @post.id %>').hide().fadeIn(1500);
+  $('#post-<%= @post.id %>')
+    .hide()
+    .fadeIn();
 });
+
+<% publish_to '/live-feed' do %>
+  $('#post-<%= @post.id %>').fadeOut(function() {
+    $(this)
+      .replaceWith('<%= j render partial: "post", locals: { post: @post } %>')
+      .fadeIn();
+  });
+<% end %>

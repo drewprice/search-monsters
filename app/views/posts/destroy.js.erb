@@ -1,1 +1,3 @@
-$('#post-<%= @post.id %>').fadeOut(3000);
+<%= publish_to '/posts/new' do %>
+  $('#post-<%= @post.id %>').fadeOut();
+<% end %>

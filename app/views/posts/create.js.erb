@@ -1,4 +1,9 @@
-document.getElementById('new_post').reset();
+<% publish_to "/live-feed" do %>
+  $('#posts').prepend('<%= j render @post %>');
 
-$('#posts').prepend('<%= j render @post %>');
-$('#post-<%= @post.id %>').hide().fadeIn(3000);
+  $('#post-<%= @post.id %>')
+    .hide()
+    .fadeIn();
+<% end %>
+
+$("#new_post")[0].reset();
