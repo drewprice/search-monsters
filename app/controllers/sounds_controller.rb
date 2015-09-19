@@ -15,7 +15,7 @@ class SoundsController < ApplicationController
   #   embed_info = client_track.get('/oembed', :url => track_url_array)
   #   @song = embed_info['html']
   #   @track_id = client_track.get('/resolve', :url => track_url_array).id
-  #   @playlists = client_playlist.get("/me/playlists")
+
   # end
 
 end

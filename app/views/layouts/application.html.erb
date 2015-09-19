@@ -5,8 +5,26 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script language="javascript">
+  function playPause(){
+      var audio = document.getElementById("player");
+      if (audio.paused){
+        audio.play();
+      }
+      else {
+        audio.pause();
+      }
+  }
+
+  </script>
 </head>
 <body>
+  <audio id="player" src="/media/PokemonTVThemeSongFull.mp3"></audio>
+<div>
+	<button onclick="playPause()" onclick=""><img src="images/pokeball.png" alt="Pokemon Logo" id="pokelogo" height="50px;" width="50px;" class: "img-responsive poke_logo_image"></button>
+</div>
+
+</html>
 
 <%= yield %>
 
