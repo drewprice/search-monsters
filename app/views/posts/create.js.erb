@@ -1,4 +1,4 @@
-<% publish_to "/live-feed" do %>
+<% publish_to '/live-feed' do %>
   $('#posts').prepend('<%= j render @post %>');
 
   $('#post-<%= @post.id %>')
