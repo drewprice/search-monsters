@@ -5,6 +5,6 @@ test:
   server: "http://localhost:9292/faye"
   secret_token: "secret"
 production:
-  server: "http://pokeball.herokuapp.com/faye"
+  server: "https://pokeball.herokuapp.com/faye"
   secret_token: "07f27c51717be7a4a9bc61d9cca8887b78d090808908f884cc6cbd05acbf5858"
-  signature_expiration:
+  signature_expiration: 86400 # one day
