@@ -6,6 +6,7 @@ $('#new_user').fadeOut(function(){
   $('#sign-up-button').fadeIn();
 });
 
-// TODO: Attach the from more eloquently
-$('#title').after('<%= j render "form" %>');
-$('#new_user').hide().fadeIn();
+$('<%= j render "form" %>')
+  .insertAfter('#title')
+  .hide()
+  .fadeIn();
