@@ -8,7 +8,7 @@
   <td>
     <%= time_ago_in_words post.created_at %> ago
   </td>
-  <% if user_signed_in? && post.user_id == session[:user_id] %>
+  <% if user_signed_in? && post.user == current_user %>
     <td class="edit-cell">
       <%= link_to 'Edit', edit_post_path(post), remote: true %>
     </td>
