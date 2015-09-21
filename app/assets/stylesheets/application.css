@@ -13,9 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-button {
-  background-color: white;
-  border: 0px solid white;
-}
-/*at the moment this works - but it will need to be made more specific */
