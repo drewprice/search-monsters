@@ -24,6 +24,12 @@ class UsersController < ApplicationController
     render 'search_results'
   end
 
+  def timeline
+    @user = current_user
+    render 'timeline'
+  end
+
+
   private
 
   def user_params

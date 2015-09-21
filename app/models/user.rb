@@ -10,6 +10,16 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :posts
 
+  def timeline_posts
+    array = []
+    following.each do |user|
+      user.posts.map do |post|
+        array << post
+      end
+    end
+    array
+  end
+
   def self.random_src
     Dir['public/images/trainers/*'].sample.gsub('public', '')
   end
