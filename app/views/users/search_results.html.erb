@@ -1,0 +1,8 @@
+<% if @users.length > 0 %>
+  <% @users.each do |user| %>
+  <p><%= (link_to "#{user.username}", user_path(user)) %></p>
+  <p><%= user.posts.last.body if user.posts.last %></p>
+  <% end %>
+<% else %>
+  <%= "#sorrynotsorry, no matches found." %>
+<% end %>

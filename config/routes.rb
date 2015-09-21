@@ -9,8 +9,12 @@ Rails.application.routes.draw do
   post '/follow/:id', to: 'relationships#create'
   post '/unfollow/:id', to: 'relationships#destroy'
 
-  resources :users
+  get '/users/search', to: 'users#search', as: 'search_user'
 
+  get '/timeline', to: 'users#timeline', as: 'timeline'
+
+  resources :users
   resources :posts
+
   delete 'posts/:id', to: 'posts#destroy', as: 'destroy_post'
 end
