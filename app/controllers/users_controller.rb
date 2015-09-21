@@ -10,8 +10,10 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
+      redirect_to posts_path
+    else
+      render 'sessions/index', alert: 'Something went wrong... try again!'
     end
-    redirect_to posts_path
   end
 
   def show
