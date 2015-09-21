@@ -17,4 +17,17 @@ class User < ActiveRecord::Base
   def self.random_name
     Bazaar.object
   end
+
+  def follow(user)
+    unless following.include?(user)
+      active_relationships.create(followed_id: user.id)
+    end
+  end
+
+  def unfollow(user)
+    if following.include?(user)
+      active_relationships.find_by(followed_id: user.id).destroy
+    end
+  end
+
 end
