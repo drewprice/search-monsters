@@ -10,6 +10,11 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :posts
 
+  def timeline_posts
+    timeline_posts = following.map{|user| user.posts.map {|post| post}}
+    (timeline_posts += posts).flatten
+  end
+
   def self.random_src
     Dir['public/images/trainers/*'].sample.gsub('public', '')
   end

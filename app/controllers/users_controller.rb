@@ -24,6 +24,13 @@ class UsersController < ApplicationController
     render 'search_results'
   end
 
+  def timeline
+    @user = current_user
+    @posts = @user.timeline_posts
+    render 'posts/index'
+  end
+
+
   private
 
   def user_params
