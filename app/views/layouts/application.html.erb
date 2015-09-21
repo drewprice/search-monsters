@@ -41,6 +41,11 @@
     <img onclick="playPause()" src="images/pokeball.png" alt="Pokemon Logo" id="pokelogo" height="50px;" width="50px;" class: "img-responsive poke_logo_image">
 </div>
 
+<%= form_tag search_user_path, :method => 'get' do %>
+  <%= label_tag(:query, "Search for:") %>
+  <%= text_field_tag(:query) %>
+  <%= submit_tag %>
+  <% end %>
 
 <%= yield %>
 

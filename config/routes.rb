@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post '/follow/:id', to: 'relationships#create'
   post '/unfollow/:id', to: 'relationships#destroy'
 
+  get '/users/search', to: 'users#search', as: 'search_user'
   resources :users
 
   resources :posts

@@ -22,4 +22,13 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.search(query)
+    if (User.find_by(username: "#{query}"))
+      [(User.find_by(username: "#{query}"))]
+    else
+     (User.where("username LIKE ?", "%#{query}%"))
+   end
+
+ end
+
 end
