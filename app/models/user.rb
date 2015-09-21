@@ -10,6 +10,14 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :posts
 
+  def self.random_src
+    Dir['public/images/trainers/*'].sample.gsub('public', '')
+  end
+
+  def self.random_name
+    Bazaar.object
+  end
+
   def follow(user)
     unless following.include?(user)
       active_relationships.create(followed_id: user.id)

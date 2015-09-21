@@ -1,10 +1,5 @@
 <%= form_for @user do |f| %>
-  <%= f.text_field :username, placeholder: 'Username' %>
+  <%= f.email_field :email, placeholder: 'Email' %>
   <%= f.password_field :password, placeholder: 'Password' %>
   <%= f.submit 'Sign up!' %>
-<p>
-<img onclick="" src="images/poketrainer1.png" alt="PokeTrainer" id="poketrainer" height="100px;" width="100px;" class: "img-responsive poketrainer">
-<img onclick="" src="images/poketrainer2.png" alt="PokeTrainer" id="poketrainer" height="100px;" width="100px;" class: "img-responsive poketrainer">
-<img onclick="" src="images/poketrainer3.png" alt="PokeTrainer" id="poketrainer" height="100px;" width="100px;" class: "img-responsive poketrainer">
-<p>
 <% end %>
