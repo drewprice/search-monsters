@@ -4,6 +4,6 @@
 
 <%= render 'sessions/status' %>
 
-<%= render 'form' %>
+<%= render 'form' if user_signed_in? %>
 
 <table id="posts"><%= render @posts.sort_by(&:created_at).reverse %></table>

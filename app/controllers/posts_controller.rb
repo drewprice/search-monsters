@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:body)
+    params.require(:post).permit(:body).merge(user_id: session[:user_id])
   end
 
   def assign_post
