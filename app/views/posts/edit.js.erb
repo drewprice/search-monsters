@@ -9,14 +9,12 @@ $initialPost.fadeOut(function() {
     .append("<button id='cancel'>Cancel</button>")
     .fadeIn();
 
+  });
+
   $('#cancel').on('click', function(e){
     e.preventDefault();
     $('#edit_post_<%= @post.id %>').fadeOut(function(){
       $(this)
       .replaceWith( $initialPost.html() );
-
     });
-
-
-  });
 });
