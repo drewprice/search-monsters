@@ -1,7 +1,7 @@
-<h3>
-<%= @user.username %>
-</h3>
+<h3><%= @user.username %></h3>
+
 <img src="<%= @user.image_src %>">
+<p><%= @user.bio %></p>
 
 <% unless current_user == @user %>
   <% if current_user.following.include?(@user) %>
@@ -10,4 +10,5 @@
     <%= render partial: 'shared/follow_button', locals: {user: @user} %>
   <% end %>
 <% end %>
+
 <table id="posts"><%= render @posts.sort_by(&:created_at).reverse %></table>
