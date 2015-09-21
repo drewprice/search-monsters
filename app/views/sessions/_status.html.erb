@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+  <%= current_user.username %>
+  /
+  <%= link_to 'Sign out', sign_out_path, method: 'delete', id: 'sign-out-button' %>
+<% else %>
+  <%= link_to 'Sign in', sign_in_path, remote: true, id: 'sign-in-button' %>
+  /
+  <%= link_to 'Sign up!', new_user_path, remote: true, id: 'sign-up-button' %>
+<% end %>

@@ -1,5 +1,9 @@
-<h1>Magic Pokémon Stuff?!</h1>
+<%= subscribe_to '/live-feed' %>
 
-<%= render 'form' %>
+<h1 id="title">Magic Pokémon Stuff?!</h1>
+
+<%= render 'sessions/status' %>
+
+<%= render 'form' if user_signed_in? %>
 
 <table id="posts"><%= render @posts.sort_by(&:created_at).reverse %></table>

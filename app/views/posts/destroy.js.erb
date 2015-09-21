@@ -1,1 +1,5 @@
-$('#post-<%= @post.id %>').fadeOut(3000);
+<% publish_to '/live-feed' do %>
+  $('#post-<%= @post.id %>').fadeOut(function() {
+      $(this).remove()
+    });
+<% end %>
