@@ -4,10 +4,11 @@ ruby '2.2.3'
 gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record
 group :production do
-gem 'pg'
-gem 'rails_12factor'
+  gem 'pg'
+  gem 'rails_12factor'
 end
 
+gem 'bazaar'
 #securing the API keys
 gem 'dotenv-rails', :groups => [:development]
 # Use SCSS for stylesheets

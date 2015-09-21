@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user           = User.new(user_params)
+    @user.username  = User.random_name
+    @user.image_src = User.random_src
+
+    binding.pry
     if @user.save
       session[:user_id] = @user.id
     end
@@ -19,6 +23,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:email, :password)
   end
 end
