@@ -2,10 +2,11 @@
 <%= @user.username %>
 </h3>
 
-<% if current_user.following.include?(@user) %>
-  <%= render partial: 'shared/unfollow_button', locals: {user: @user} %>
-<% else %>
-  <%= render partial: 'shared/follow_button', locals: {user: @user} %>
+<% unless current_user == @user %>
+  <% if current_user.following.include?(@user) %>
+    <%= render partial: 'shared/unfollow_button', locals: {user: @user} %>
+  <% else %>
+    <%= render partial: 'shared/follow_button', locals: {user: @user} %>
+  <% end %>
 <% end %>
-
 <table id="posts"><%= render @posts.sort_by(&:created_at).reverse %></table>
