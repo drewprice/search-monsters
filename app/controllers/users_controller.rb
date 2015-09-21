@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     @user.username  = User.random_name
     @user.image_src = User.random_src
 
-    binding.pry
     if @user.save
       session[:user_id] = @user.id
     end
