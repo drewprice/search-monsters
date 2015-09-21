@@ -1,2 +1,11 @@
-$('#sign-in-button').hide();
+$('#sign-in-button').fadeOut();
+
+// Toggle sign up if necessary
+$('#new_user').fadeOut(function(){
+  $(this).remove();
+  $('#sign-up-button').fadeIn();
+});
+
+// TODO: Attach the from more eloquently
 $('#title').after('<%= j render "form" %>');
+$('#new_user').hide().fadeIn();
