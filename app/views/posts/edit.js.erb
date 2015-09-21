@@ -1,8 +1,22 @@
-$('#post-<%= @post.id %>').fadeOut(function() {
+var $initialPost = $('#post-<%= @post.id %>');
+
+$initialPost.fadeOut(function() {
   $(this)
     .replaceWith("<%= j render 'form' %>");
 
   $('#edit_post_<%= @post.id %>')
     .hide()
+    .append("<button id='cancel'>Cancel</button>")
     .fadeIn();
+
+  $('#cancel').on('click', function(e){
+    e.preventDefault();
+    $('#edit_post_<%= @post.id %>').fadeOut(function(){
+      $(this)
+      .replaceWith( $initialPost.html() );
+
+    });
+
+
+  });
 });
