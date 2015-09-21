@@ -1,7 +1,11 @@
 <h3><%= @user.username %></h3>
 
 <img src="<%= @user.image_src %>">
-<p><%= @user.bio %></p>
+<p>Bio: <%= @user.bio %></p>
+
+<% if current_user = @user %>
+  <%= link_to "Edit Profile", path, class: "btn btn-primary" %>
+<% end %>
 
 <% unless current_user == @user %>
   <% if current_user.following.include?(@user) %>
