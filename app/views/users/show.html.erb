@@ -1,7 +1,7 @@
 <h3>
 <%= @user.username %>
 </h3>
-<%=@user.image_src%>
+<img src="<%= @user.image_src %>">
 
 <% unless current_user == @user %>
   <% if current_user.following.include?(@user) %>
