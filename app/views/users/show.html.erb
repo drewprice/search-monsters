@@ -1,3 +1,12 @@
-I'm the show template
+<h3>
+<%= @user.username %>
+</h3>
+
+<% if current_user.following.include?(@user) %>
+  <%= button_to "Unfollow this user", {controller: "relationships", action: "destroy", id: @user.id}, remote: true %>
+<% else %>
+  <%= button_to "Follow this user", {controller: "relationships", action: "create", id: @user.id}, remote: true %>
+<% end %>
 
 <table id="posts"><%= render @posts.sort_by(&:created_at).reverse %></table>
+ 
