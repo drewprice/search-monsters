@@ -1,6 +1,8 @@
 <%= subscribe_to '/live-feed' %>
 
-<h2 id="title">Hi <%= current_user.username %></h2>
+<h2 id="title">Hi <%= current_user.username.capitalize %></h2>
+
+<%= link_to "Sign out", sign_out_path, id: 'sign-out-button', method: 'delete' %>
 
 <%= render 'form' if user_signed_in? %>
 

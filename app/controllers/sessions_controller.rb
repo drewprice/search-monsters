@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def index
-    
+
   end
 
   def destroy
@@ -20,6 +20,6 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
     end
 
-    redirect_to root_path
+    redirect_to posts_path
   end
 end
