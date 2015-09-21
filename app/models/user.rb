@@ -11,11 +11,15 @@ class User < ActiveRecord::Base
   has_many :posts
 
   def follow(user)
-    active_relationships.create(followed_id: user.id)
+    unless following.include?(user)
+      active_relationships.create(followed_id: user.id)
+    end
   end
 
   def unfollow(user)
-    active_relationships.find_by(followed_id: user.id).destroy
+    if following.include?(user)
+      active_relationships.find_by(followed_id: user.id).destroy
+    end
   end
 
 end

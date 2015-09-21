@@ -1,1 +1,1 @@
-alert("Destroy")
+$('#unfollowbutton').replaceWith('<%= j render partial: 'shared/follow_button', locals: {user: @other_user} %>');
