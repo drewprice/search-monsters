@@ -1,0 +1,9 @@
+<td>
+  <%= post.user ? post.user.username : 'Guest'%>:
+</td>
+<td class="body-cell">
+  <%= post.body %>
+</td>
+<td>
+  <%= time_ago_in_words post.created_at %> ago
+</td>
