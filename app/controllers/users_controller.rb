@@ -26,7 +26,8 @@ class UsersController < ApplicationController
 
   def timeline
     @user = current_user
-    render 'timeline'
+    @posts = @user.timeline_posts
+    render 'posts/index'
   end
 
 
