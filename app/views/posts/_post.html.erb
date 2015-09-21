@@ -2,7 +2,7 @@
   <td class="body-cell">
     <%= post.body %>
   </td>
-  <% if post.user_id == session[:user_id] %>
+  <% if user_signed_in? && post.user_id == session[:user_id] %>
     <td class="edit-cell">
       <%= link_to 'Edit', edit_post_path(post), remote: true %>
     </td>
