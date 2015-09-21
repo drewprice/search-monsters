@@ -1,0 +1,6 @@
+<td class="edit-cell crud">
+  <%= link_to 'Edit', edit_post_path(post), remote: true %>
+</td>
+<td class="delete-cell crud">
+  <%= link_to 'Delete', destroy_post_path(post), method: 'delete', remote: true %>
+</td>
