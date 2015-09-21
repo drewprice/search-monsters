@@ -1,0 +1,5 @@
+var $username = $('#username');
+var $edit = $('#edit');
+var $bio = $('#user-bio');
+
+ $('<%= j render partial: "edit_form", locals: { user: @user } %>').appendTo('body');

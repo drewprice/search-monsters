@@ -1,10 +1,10 @@
-<h3><%= @user.username %></h3>
+<h3 id="username"><%= @user.username %></h3>
 
 <img src="<%= @user.image_src %>">
-<p>Bio: <%= @user.bio %></p>
+<p>Bio: <span id="user-bio"><%= @user.bio %></span></p>
 
 <% if current_user = @user %>
-  <%= link_to "Edit Profile", edit_user_path(@user), remote: true %>
+  <%= link_to "Edit Profile", edit_user_path(@user), remote: true, id: "edit" %>
 <% end %>
 
 <% unless current_user == @user %>
