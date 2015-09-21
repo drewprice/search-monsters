@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :users
   root 'posts#index'
-  resources :posts
-  delete '/logout', to: "sessions#destroy", as: "logout"
-  get '/login', to: "sessions#new", as: "login"
-  post '/login', to: "sessions#create"
-  delete 'posts/:id', to: 'posts#destroy', as: 'destroy_post'
 
+  get '/signin', to: 'sessions#new', as: 'sign_in'
+  post '/signin', to: 'sessions#create'
+  delete '/signout', to: 'sessions#destroy', as: 'sign_out'
+
+  resources :users
+
+  resources :posts
+  delete 'posts/:id', to: 'posts#destroy', as: 'destroy_post'
 end
