@@ -29,6 +29,9 @@
     <img onclick="playPause()" src="/images/pokeball.png" alt="Pokemon Logo" id="pokelogo" height="50px;" width="50px;" class: "img-responsive poke_logo_image">
 </div>
 
+<%= link_to "My Timeline!", timeline_path if current_user %>
+<%= link_to "Pokewall", posts_path %>
+
 <%= form_tag search_user_path, :method => 'get' do %>
   <%= label_tag(:query, "Search for:") %>
   <%= text_field_tag(:query) %>
