@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
   searchkick autocomplete: ['username']
 
   has_secure_password
