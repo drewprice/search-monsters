@@ -19,7 +19,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @posts = @user.posts
+    begin
+      @posts = @user.posts
+    rescue
+      flash[:notice] = "Sorry, that user does not exist!"
+      redirect_to root_path
+    end
   end
 
   def update
@@ -38,6 +43,7 @@ class UsersController < ApplicationController
   def timeline
     @user = current_user
     @posts = @user.timeline_posts
+    @post = Post.new
     render 'posts/index'
   end
 

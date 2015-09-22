@@ -6,6 +6,17 @@
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+ <!-- Google Analytics script -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67905983-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics script -->
+
   <title>CapsuleMonsters</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -41,7 +52,11 @@
       <%= content_tag :div, msg %>
     <% end -%>
 
-    <%= yield %>
+<%= link_to "My Timeline!", timeline_path if current_user %>
+<%= link_to "Pokewall", posts_path %>
+
+<%= yield %>
+
 
   </body>
 </html>
