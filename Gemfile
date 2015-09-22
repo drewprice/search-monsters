@@ -8,7 +8,11 @@ group :production do
   gem 'rails_12factor'
 end
 
+#search competencies
+gem 'elasticsearch-rails'
+gem 'elasticsearch-model'
 gem 'searchkick'
+#name generator
 gem 'bazaar'
 #securing the API keys
 gem 'dotenv-rails', :groups => [:development]

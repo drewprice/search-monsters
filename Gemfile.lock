@@ -64,6 +64,11 @@ GEM
       elasticsearch-transport (= 1.0.13)
     elasticsearch-api (1.0.13)
       multi_json
+    elasticsearch-model (0.1.7)
+      activesupport (> 3)
+      elasticsearch (> 0.4)
+      hashie
+    elasticsearch-rails (0.1.7)
     elasticsearch-transport (1.0.13)
       faraday
       multi_json
@@ -213,6 +218,8 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   dotenv-rails
+  elasticsearch-model
+  elasticsearch-rails
   jbuilder (~> 2.0)
   jquery-rails
   pg
