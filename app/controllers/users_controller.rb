@@ -25,6 +25,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def update
+    binding.pry
+  end
+
   def search
     @users = User.search(params[:query])
     render 'search_results'

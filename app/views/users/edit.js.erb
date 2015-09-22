@@ -1,5 +1,34 @@
 var $username = $('#username');
-var $edit = $('#edit');
-var $bio = $('#user-bio');
+var $bio      = $('#user-bio');
+var $edit     = $('#edit');
 
- $('<%= j render partial: "edit_form", locals: { user: @user } %>').appendTo('body');
+$('body').append('<%= j render partial: "edit_form", locals: { user: @user } %>');
+
+var $fieldForUsername = $('#edit-username');
+var $fieldForBio      = $('#edit-bio');
+var $save             = $('#save');
+var $cancel           = $('#cancel');
+
+(function() {
+  $username
+    .replaceWith( $fieldForUsername[0] );
+
+  $bio
+    .replaceWith( $fieldForBio[0] );
+
+  $edit
+    .replaceWith( $save[0] );
+}());
+
+$('#cancel').click(function(event){
+  event.preventDefault();
+
+  $('#edit-username')
+    .replaceWith($username[0]);
+
+  $('#edit-bio')
+    .replaceWith($bio[0]);
+
+  $('#save')
+    .replaceWith($edit[0]);
+});
