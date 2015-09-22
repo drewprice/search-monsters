@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [:show, :update]
+
   def new
     @user = User.new
   end
@@ -17,16 +19,15 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @posts = @user.posts
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
-
   def update
-    binding.pry
+    @user.update(user_params)
+
+    respond_to do |format|
+      format.json { render json: @user }
+    end
   end
 
   def search
@@ -43,6 +44,10 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :username, :bio, :image_src)
+  end
+
+  def find_user
+    @user = User.find(params[:id])
   end
 end

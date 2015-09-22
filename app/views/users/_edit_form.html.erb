@@ -1,6 +1,0 @@
-<%= form_tag user_path, method: 'patch' do %>
-  <%= text_field_tag 'user[username]', user.username, id: 'edit-username' %>
-  <%= text_field_tag 'user[bio]', user.bio, id: 'edit-bio' %>
-  <%= submit_tag 'Save', id: 'save' %>
-  <%= button_tag 'Cancel', id: 'cancel' %>
-<% end %>
