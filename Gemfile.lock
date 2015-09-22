@@ -40,6 +40,9 @@ GEM
     arel (6.0.3)
     bazaar (0.0.2)
     bcrypt (3.1.10)
+    best_in_place (3.0.3)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -78,11 +81,13 @@ GEM
       em-socksify (>= 0.3)
       eventmachine (>= 1.0.3)
       http_parser.rb (>= 0.6.0)
-    em-socksify (0.3.0)
+    em-socksify (0.3.1)
       eventmachine (>= 1.0.0.beta.4)
     erubis (2.7.0)
     eventmachine (1.0.8)
     execjs (2.6.0)
+    faker (1.5.0)
+      i18n (~> 0.5)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     faye (1.1.2)
@@ -215,11 +220,13 @@ PLATFORMS
 DEPENDENCIES
   bazaar
   bcrypt (~> 3.1.7)
+  best_in_place
   byebug
   coffee-rails (~> 4.1.0)
   dotenv-rails
   elasticsearch-model
   elasticsearch-rails
+  faker
   jbuilder (~> 2.0)
   jquery-rails
   pg

@@ -1,0 +1,12 @@
+<td>
+  <%= link_to "#{post.user.username}", user_path(post.user) %>:
+</td>
+<td class="body-cell">
+  <%= best_in_place post, :body %> - edit
+</td>
+<td>
+  <%= time_ago_in_words post.created_at %> ago
+</td>
+<td>
+  <%= link_to "Delete", destroy_post_path(post), method: 'delete', remote: true %>
+</td>

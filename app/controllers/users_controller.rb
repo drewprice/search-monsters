@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [:show, :update]
 
   def index
     if params[:query].present?
      @users = User.search(params[:query])
-   else
+    else
      @users = User.all
-   end
+    end
   end
 
   def new
@@ -13,10 +14,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user           = User.new(user_params)
-    @user.username  = User.random_name
-    @user.image_src = User.random_src
-
+    @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
       redirect_to posts_path
@@ -27,7 +25,6 @@ class UsersController < ApplicationController
 
   def show
     begin
-      @user = User.find(params[:id])
       @posts = @user.posts
     rescue
       flash[:notice] = "Sorry, that user does not exist!"
@@ -35,6 +32,22 @@ class UsersController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
+=======
+  def update
+    @user.update(user_params)
+
+    respond_to do |format|
+      format.json { render json: @user }
+    end
+  end
+
+  def search
+    @users = User.search(params[:query])
+    render 'search_results'
+  end
+
+>>>>>>> master
   def timeline
     @user = current_user
     @posts = @user.timeline_posts
@@ -42,15 +55,22 @@ class UsersController < ApplicationController
     render 'posts/index'
   end
 
+<<<<<<< HEAD
   def autocomplete
    values = User.search(params[:query], autocomplete: false, limit: 10).map {|u| {username: u.username}}
    render json: values
   end
 
 
+=======
+>>>>>>> master
   private
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :username, :bio, :image_src)
+  end
+
+  def find_user
+    @user = User.find(params[:id])
   end
 end

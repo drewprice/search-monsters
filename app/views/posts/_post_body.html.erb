@@ -1,9 +1,0 @@
-<td>
-  <%= post.user ? (link_to "#{post.user.username}", user_path(post.user)) : 'Guest'%>:
-</td>
-<td class="body-cell">
-  <%= post.body %>
-</td>
-<td>
-  <%= time_ago_in_words post.created_at %> ago
-</td>
