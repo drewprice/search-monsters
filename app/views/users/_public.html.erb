@@ -1,0 +1,19 @@
+<p>
+  <strong>Username:</strong>
+  <%= user.username %>
+</p>
+<p>
+  <strong>Avatar:</strong>
+  <img src="<%= user.image_src %>">
+</p>
+<p>
+  <strong>Bio:</strong>
+  <%= user.bio %>
+</p>
+<p>
+  <% if current_user.following.include?(user) %>
+    <%= render partial: 'shared/unfollow_button', locals: {user: user} %>
+  <% else %>
+    <%= render partial: 'shared/follow_button', locals: {user: user} %>
+  <% end %>
+</p>

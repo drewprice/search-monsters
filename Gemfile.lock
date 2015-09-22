@@ -40,6 +40,9 @@ GEM
     arel (6.0.3)
     bazaar (0.0.2)
     bcrypt (3.1.10)
+    best_in_place (3.0.3)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -194,6 +197,7 @@ PLATFORMS
 DEPENDENCIES
   bazaar
   bcrypt (~> 3.1.7)
+  best_in_place
   byebug
   coffee-rails (~> 4.1.0)
   dotenv-rails

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [:show, :update]
+
   def new
     @user = User.new
   end
@@ -18,11 +20,18 @@ class UsersController < ApplicationController
 
   def show
     begin
-      @user = User.find(params[:id])
       @posts = @user.posts
     rescue
       flash[:notice] = "Sorry, that user does not exist!"
       redirect_to root_path
+    end
+  end
+
+  def update
+    @user.update(user_params)
+
+    respond_to do |format|
+      format.json { render json: @user }
     end
   end
 
@@ -38,10 +47,13 @@ class UsersController < ApplicationController
     render 'posts/index'
   end
 
-
   private
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :username, :bio, :image_src)
+  end
+
+  def find_user
+    @user = User.find(params[:id])
   end
 end
