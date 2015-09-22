@@ -52,9 +52,9 @@ class User < ActiveRecord::Base
 private
 
   def random_setup
-    self.username  = User.random_username
-    self.image_src = User.random_image_src
-    self.bio = User.random_bio
+    self.username ||= User.random_username
+    self.image_src ||= User.random_image_src
+    self.bio ||= User.random_bio
   end
 
 end
