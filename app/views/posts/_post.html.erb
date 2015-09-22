@@ -1,7 +1,7 @@
 <tr id="post-<%= post.id %>">
-  <%= render partial: 'posts/post_body', locals: { post: post } %>
-
   <% if current_user == post.user %>
-    <%= render partial: 'posts/post_crud', locals: { post: post } %>
+    <%= render partial: 'private', locals: { post: post } %>
+  <% else %>
+    <%= render partial: 'public',  locals: { post: post } %>
   <% end %>
 </tr>
