@@ -32,6 +32,42 @@
       }
   }
   </script>
+  <script type="text/javascript" src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+  <script language="javascript">
+      var ready;
+      ready = function() {
+
+         var usersSearch = new Bloodhound({
+           remote: {url: "/users/autocomplete?query=%QUERY", wildcard: "%QUERY"},
+           datumTokenizer: function(d) {
+                   return Bloodhound.tokenizers.whitespace(d.username); },
+           queryTokenizer: Bloodhound.tokenizers.whitespace
+         });
+
+      // initialize the bloodhound suggestion engine
+
+      var promise = usersSearch.initialize();
+
+      promise
+      .done(function() { console.log('success!'); })
+      .fail(function() { console.log('err!'); });
+
+      // instantiate the typeahead UI
+      $('.typeahead').typeahead({
+      hint: true,
+      highlight: true,
+      minLength: 0
+      },{
+        name: 'peaches',
+        display: 'username',
+        source: usersSearch.ttAdapter()
+
+      });
+    }
+
+      $(document).ready(ready);
+      $(document).on('page:load', ready);
+  </script>
 </head>
 
   <body>
@@ -41,11 +77,11 @@
     </div>
 
 
-<div class="users-search">
+<div class="users-search" id="remote">
  <h1>Search Users</h1>
  <%= form_tag users_path, method: :get do %>
    <div class="form-group">
-     <%= text_field_tag :query, params[:query], class: 'form-control' %>
+     <%= text_field_tag :query, params[:query], class: 'form-control typeahead', autocomplete: "off", placeholder: "Search" %>
      <%= submit_tag 'Search', class: 'btn btn-primary' %>
    </div>
  <% end %>
