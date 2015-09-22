@@ -8,6 +8,7 @@ group :production do
   gem 'rails_12factor'
 end
 
+gem 'searchkick'
 gem 'bazaar'
 #securing the API keys
 gem 'dotenv-rails', :groups => [:development]

@@ -1,4 +1,13 @@
 class UsersController < ApplicationController
+
+  def index
+    if params[:query].present?
+     @users = User.search(params[:query])
+   else
+     @users = User.all
+   end
+  end
+
   def new
     @user = User.new
   end
@@ -26,16 +35,20 @@ class UsersController < ApplicationController
     end
   end
 
-  def search
-    @users = User.search(params[:query])
-    render 'search_results'
-  end
+  # def search
+  #   @users = User.search(params[:query])
+  #   render 'search_results'
+  # end
 
   def timeline
     @user = current_user
     @posts = @user.timeline_posts
     @post = Post.new
     render 'posts/index'
+  end
+
+  def autocomplete
+   render json: User.search(params[:query], autocomplete: false, limit: 10).map(&:username)
   end
 
 

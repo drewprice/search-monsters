@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  searchkick autocomplete: ['username']
+
   has_secure_password
   has_many :active_relationships, class_name:  "Relationship",
                                  foreign_key: "follower_id",
@@ -35,13 +37,13 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.search(query)
-    if (User.find_by(username: "#{query}"))
-      [(User.find_by(username: "#{query}"))]
-    else
-     (User.where("username LIKE ?", "%#{query}%"))
-   end
-
- end
+  # def self.search(query)
+  #   if (User.find_by(username: "#{query}"))
+  #     [(User.find_by(username: "#{query}"))]
+  #   else
+  #    (User.where("username LIKE ?", "%#{query}%"))
+  #  end
+  #
+  # end
 
 end

@@ -40,13 +40,16 @@
       <img onclick="playPause()" src="/images/pokeball.png" alt="Pokemon Logo" id="pokelogo" height="50px;" width="50px;" class: "img-responsive poke_logo_image">
     </div>
 
-    <% if user_signed_in? %>
-      <%= form_tag search_user_path, :method => 'get' do %>
-        <%= label_tag(:query, "Search for:") %>
-        <%= text_field_tag(:query) %>
-        <%= submit_tag 'Search' %>
-      <% end %>
-    <% end %>
+
+<div class="users-search">
+ <h1>Search Users</h1>
+ <%= form_tag users_path, method: :get do %>
+   <div class="form-group">
+     <%= text_field_tag :query, params[:query], class: 'form-control' %>
+     <%= submit_tag 'Search', class: 'btn btn-primary' %>
+   </div>
+ <% end %>
+</div>
 
     <% flash.each do |name, msg| -%>
       <%= content_tag :div, msg %>
