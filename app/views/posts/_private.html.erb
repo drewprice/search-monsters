@@ -8,5 +8,5 @@
   <%= time_ago_in_words post.created_at %> ago
 </td>
 <td>
-  <%= link_to "Delete", destroy_post_path(post), method: 'delete', remote: true %>
+  <%= link_to "Delete", destroy_post_path(post), method: 'delete', class: "btn btn-default", remote: true %>
 </td>

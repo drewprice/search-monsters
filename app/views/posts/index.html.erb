@@ -4,8 +4,8 @@
 
 <img src="<%= current_user.image_src %>">
 
-<%= link_to "Sign out", sign_out_path, id: 'sign-out-button', method: 'delete' %>
+<%= link_to "Sign out", sign_out_path, id: 'sign-out-button', class: "btn btn-default", method: 'delete' %>
 
 <%= render 'posts/form' if user_signed_in? %>
 
-<table id="posts"><%= render @posts.sort_by(&:created_at).reverse %></table>
+<table id="posts" class="table"><%= render @posts.sort_by(&:created_at).reverse %></table>
