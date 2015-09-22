@@ -10,16 +10,18 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :posts
 
+  before_save :random_setup
+
   def timeline_posts
     timeline_posts = following.map{|user| user.posts.map {|post| post}}
     (timeline_posts += posts).flatten
   end
 
-  def self.random_src
+  def self.random_image_src
     Dir['public/images/trainers/*'].sample.gsub('public', '')
   end
 
-  def self.random_name
+  def self.random_username
     Bazaar.object.split.map{|word| word.capitalize }.join(" ")
   end
 
@@ -41,7 +43,18 @@ class User < ActiveRecord::Base
     else
      (User.where("username LIKE ?", "%#{query}%"))
    end
+  end
 
- end
+  def self.random_bio
+    Faker::Hacker.say_something_smart
+  end
+
+private
+
+  def random_setup
+    self.username  = User.random_username
+    self.image_src = User.random_image_src
+    self.bio = User.random_bio
+  end
 
 end

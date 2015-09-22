@@ -7,6 +7,8 @@ group :production do
   gem 'pg'
   gem 'rails_12factor'
 end
+# Seed data
+gem 'faker'
 # Random name generator
 gem 'bazaar'
 #securing the API keys
