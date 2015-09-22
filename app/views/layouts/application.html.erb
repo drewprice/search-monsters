@@ -48,12 +48,12 @@
       <% end %>
     <% end %>
 
-
     <% flash.each do |name, msg| -%>
       <%= content_tag :div, msg %>
     <% end -%>
 
-
+<%= link_to "My Timeline!", timeline_path if current_user %>
+<%= link_to "Pokewall", posts_path %>
 
 <%= yield %>
 
