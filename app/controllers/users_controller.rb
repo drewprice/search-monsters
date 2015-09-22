@@ -17,8 +17,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @posts = @user.posts
+    begin
+      @user = User.find(params[:id])
+      @posts = @user.posts
+    rescue
+      flash[:notice] = "Sorry, that user does not exist!"
+      redirect_to root_path
+    end
   end
 
   def search
