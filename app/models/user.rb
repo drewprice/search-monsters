@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   end
 
   def self.random_name
-    Bazaar.object
+    Bazaar.object.split.map{|word| word.capitalize }.join(" ")
   end
 
   def follow(user)
