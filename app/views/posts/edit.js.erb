@@ -6,7 +6,7 @@ $initialPost.fadeOut(function() {
 
   $('#edit_post_<%= @post.id %>')
     .hide()
-    .append("<button id='cancel'>Cancel</button>")
+    .append("<button id='cancel', class="btn btn-default">Cancel</button>")
     .fadeIn();
   });
 
