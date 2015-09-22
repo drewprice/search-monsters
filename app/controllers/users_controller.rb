@@ -32,8 +32,6 @@ class UsersController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-=======
   def update
     @user.update(user_params)
 
@@ -42,12 +40,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def search
-    @users = User.search(params[:query])
-    render 'search_results'
-  end
-
->>>>>>> master
   def timeline
     @user = current_user
     @posts = @user.timeline_posts
@@ -55,15 +47,11 @@ class UsersController < ApplicationController
     render 'posts/index'
   end
 
-<<<<<<< HEAD
   def autocomplete
    values = User.search(params[:query], autocomplete: false, limit: 10).map {|u| {username: u.username}}
    render json: values
   end
 
-
-=======
->>>>>>> master
   private
 
   def user_params
