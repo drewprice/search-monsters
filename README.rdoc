@@ -5,6 +5,12 @@ Because of its dependency on a Faye server, you must run this command along with
 $ rackup private_pub.ru -s thin -E production
 ```
 
+```bash
+$ elasticsearch
+```
+This runs the elasticsearch server, which is supporting the searchkick gem - this has the potential to impact heroku deployment
+
+
 == README
 
 This README would normally document whatever steps are necessary to get the

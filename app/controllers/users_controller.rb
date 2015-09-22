@@ -35,11 +35,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # def search
-  #   @users = User.search(params[:query])
-  #   render 'search_results'
-  # end
-
   def timeline
     @user = current_user
     @posts = @user.timeline_posts
