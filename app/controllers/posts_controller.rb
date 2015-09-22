@@ -8,7 +8,13 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-    @post.save
+    respond_to do |format|
+      if @post.save
+        format.js
+      else
+        format.js { render 'posts/error' }
+      end
+    end
   end
 
   def edit

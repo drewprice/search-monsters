@@ -1,0 +1,12 @@
+// TODO: Pretty up this error?
+$('<p id="post-error">No blank posts fool!</p>')
+  .appendTo('#new_post')
+  .hide()
+  .fadeIn();
+
+
+setTimeout(function(){
+  $('#post-error').fadeOut(function(){
+    $(this).remove();
+  })
+}, 3000);
