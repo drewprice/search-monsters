@@ -5,7 +5,7 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
+Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['http://paas:f5f81a72ebc67cc8e7ca9d0d50171291@fili-us-east-1.searchly.com']
 
 module CapsuleMonsters
   class Application < Rails::Application
