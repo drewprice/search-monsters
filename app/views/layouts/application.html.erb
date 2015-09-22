@@ -21,21 +21,27 @@
       }
   }
   </script>
-  </head>
+</head>
 
-<body>
-  <audio id="player" src="/media/PokemonTVThemeSongFull.mp3"></audio>
-<div>
-    <img onclick="playPause()" src="/images/pokeball.png" alt="Pokemon Logo" id="pokelogo" height="50px;" width="50px;" class: "img-responsive poke_logo_image">
-</div>
+  <body>
+    <div>
+      <audio id="player" src="/media/PokemonTVThemeSongFull.mp3"></audio>
+      <img onclick="playPause()" src="/images/pokeball.png" alt="Pokemon Logo" id="pokelogo" height="50px;" width="50px;" class: "img-responsive poke_logo_image">
+    </div>
 
-<%= form_tag search_user_path, :method => 'get' do %>
-  <%= label_tag(:query, "Search for:") %>
-  <%= text_field_tag(:query) %>
-  <%= submit_tag %>
-  <% end %>
+    <% if user_signed_in? %>
+      <%= form_tag search_user_path, :method => 'get' do %>
+        <%= label_tag(:query, "Search for:") %>
+        <%= text_field_tag(:query) %>
+        <%= submit_tag 'Search' %>
+      <% end %>
+    <% end %>
 
-<%= yield %>
+    <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg %>
+    <% end -%>
 
-</body>
+    <%= yield %>
+
+  </body>
 </html>
