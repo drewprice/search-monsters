@@ -3,14 +3,14 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.all.page(params[:page]).per_page(5)
+    @posts = Post.reorder("created_at DESC").page(params[:page]).per_page(60)
   end
 
   def create
     @post = current_user.posts.new(post_params)
     respond_to do |format|
       if @post.save
-        format.js
+        format.js {render 'posts/create'}
       else
         format.js { render 'posts/error' }
       end

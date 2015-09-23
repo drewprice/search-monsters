@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :update]
 
@@ -43,7 +44,9 @@ class UsersController < ApplicationController
 
   def timeline
     @user = current_user
-    @posts = @user.timeline_posts
+    @array = @user.following.map{|user| user.id}
+    @array << @user.id
+    @posts = Post.reorder("created_at DESC").where(:user_id => @array).page(params[:page]).per_page(60)
     @post = Post.new
     render 'posts/index'
   end
