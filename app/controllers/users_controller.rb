@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def show
     begin
-      @posts = @user.posts
+      @posts = Post.reorder("created_at DESC").where(:user_id => @user.id).page(params[:page]).per_page(Post.num_per_page)
     rescue
       flash[:notice] = "Sorry, that user does not exist!"
       redirect_to root_path
