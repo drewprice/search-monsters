@@ -1,4 +1,7 @@
 <td>
+  <%= image_tag post.user.avatar.url(:post) %>
+</td>
+<td>
   <%= link_to "#{post.user.username}", user_path(post.user) %>:
 </td>
 <td>

@@ -1,9 +1,12 @@
 class User < ActiveRecord::Base
+  has_secure_password
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>", post: "50x50>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   searchkick autocomplete: ['username']
 
-  has_secure_password
   has_many :active_relationships, class_name:  "Relationship",
                                  foreign_key: "follower_id",
                                  dependent: :destroy
@@ -14,8 +17,9 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :posts
 
+
   validates :email, presence: true, uniqueness: true
-  validates :password, length: { minimum: 6}
+  # validates :password, length: { minimum: 6}
 
   before_save :random_setup
 
@@ -48,6 +52,11 @@ class User < ActiveRecord::Base
   def self.random_image_src
     Dir['public/images/trainers/*'].sample.gsub('public', '')
   end
+  
+  def self.random_avatar
+    image_path = Dir['public/images/trainers/*'].sample
+    File.open(image_path)
+  end
 
   def self.random_username
     Bazaar.object.split.map{|word| word.capitalize }.join(" ")
@@ -69,12 +78,12 @@ class User < ActiveRecord::Base
     Faker::Hacker.say_something_smart
   end
 
-private
+  private
 
   def random_setup
     self.username ||= User.random_username
-    self.image_src ||= User.random_image_src
     self.bio ||= User.random_bio
+    self.avatar = User.random_avatar unless avatar_file_name
   end
 
 end
