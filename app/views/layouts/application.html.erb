@@ -30,9 +30,16 @@
           <!-- spacing -->
         </div>
         <div class="col-md-9">
-        <div>
+        <div class="goodPlayer">
           <audio id="player" src="/media/PokemonTVThemeSongFull.mp3"></audio>
           <img onclick="playPause()" src="/images/pokeball.png" alt="Pokemon Logo" id="pokelogo" height="50px;" width="50px;" class: "img-responsive poke_logo_image">
+          <a id="bad" style="cursor: pointer;">I'm a bad guy</a>
+        </div>
+
+        <div class="badPlayer" style="display: none;">
+          <audio id="player2" src="/media/TeamRocketThemeSong.mp3"></audio>
+          <img onclick="playPause2()" src="/images/team_rocket_pokeball.png" alt="Pokemon Logo" id="pokelogo" height="50px;" width="50px;" class: "img-responsive poke_logo_image">
+          <a id="good" style="cursor: pointer;">I would prefer to be a good guy</a>
         </div>
 
         <% if user_signed_in? %>
