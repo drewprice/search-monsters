@@ -37,22 +37,26 @@ class User < ActiveRecord::Base
   end
 
   def sample_suggestions
-      sampled_suggestions = filtered_suggestions.sample(3)
-     if sampled_suggestions.uniq.length < 3
+      already_sampled_suggestions = filtered_suggestions.sample(3)
+     if already_sampled_suggestions.uniq.length < 3
        sample_suggestions
      else
-       sampled_suggestions
+       already_sampled_suggestions
      end
   end
 
   def get_suggestions
-     sample_suggestions.size < 3 ? User.all.sample(3) : sample_suggestions
+    if self.following.length < 1 || sample_suggestions.size < 3
+      User.all.sample(3)
+    else
+      sample_suggestions
+    end
   end
 
   def self.random_image_src
     Dir['public/images/trainers/*'].sample.gsub('public', '')
   end
-  
+
   def self.random_avatar
     image_path = Dir['public/images/trainers/*'].sample
     File.open(image_path)
