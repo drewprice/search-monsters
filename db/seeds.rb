@@ -5,3 +5,7 @@ end
 1000.times do
   User.find(rand(1..100)).posts.create(body: Faker::Hacker.say_something_smart)
 end
+
+800.times do
+  User.find(rand(1..100)).following << User.find(rand(1..100))
+end
