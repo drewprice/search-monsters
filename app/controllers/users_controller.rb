@@ -19,8 +19,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to posts_path
     else
-      flash[:notice] = @user.errors.messages
-      redirect_to root_path
+      render 'sessions/index', alert: 'Something went wrong... try again!'
     end
   end
 
