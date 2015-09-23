@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :posts
 
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true
+  validates :password, length: { minimum: 6}
 
   before_save :random_setup
 

@@ -50,9 +50,14 @@
           <%= link_to "Pokewall", posts_path, class: "btn btn-default" %>
         <% end %>
 
-          <% flash.each do |name, msg| -%>
-            <%= content_tag :div, msg %>
-          <% end -%>
+          <% if flash[:notice] %>
+          <div class="alert alert-warning">
+            <% flash[:notice].each do |name, msg| -%>
+              <%=  name.capitalize + " " + msg.to_sentence %>
+            <% end -%>
+          </div>
+          <% end %>
+
 
 
           <%= yield %>
