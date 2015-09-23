@@ -44,6 +44,7 @@ gem 'private_pub'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'remotipart'
+gem 'paperclip'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
