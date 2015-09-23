@@ -46,6 +46,7 @@ gem 'private_pub'
 # gem 'unicorn'
 gem 'remotipart'
 gem 'paperclip'
+gem 'aws-sdk'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
