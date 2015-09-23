@@ -23,6 +23,8 @@ class PostsController < ApplicationController
   def update
     @post.update(post_params)
 
+    PrivatePub.publish_to('/live-feed', message: @post)
+
     respond_to do |format|
       format.json { render json: @post }
     end
