@@ -1,17 +1,18 @@
 <p>
+  <strong>Username:</strong>
+  <%= best_in_place user, :username %> EDIT ME
+</p>
+<p>
   <%= image_tag user.avatar.url(:thumb), id: 'avatar' %>
 </p>
 <p>
-  <strong>Username:</strong>
-  <%= best_in_place user, :username %> EDIT ME
+  <%= form_for(user, remote: true) do |f| %>
+    <%= f.label :avatar, 'Upgrade your avatar' %>
+    <%= f.file_field :avatar %>
+    <%= f.submit 'save' %>
+  <% end %>
 </p>
 <p>
   <strong>Bio:</strong>
   <%= best_in_place user, :bio %> EDIT ME
 </p>
----
----
-<%= form_for(user, remote: true) do |f| %>
-  <%= f.file_field :avatar %>
-  <%= f.submit 'save' %>
-<% end %>
