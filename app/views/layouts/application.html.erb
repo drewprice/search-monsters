@@ -40,6 +40,8 @@
        Would you like to follow:
        <% suggestions = current_user.get_suggestions %>
        <% suggestions.each do |suggested_user| %>
+       <br>
+         <%= image_tag "suggested_user.avatar.url" %>
          <%= link_to "#{suggested_user.username}", suggested_user %>
        <% end %>
      </div>
