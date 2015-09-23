@@ -38,7 +38,6 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.js
       format.json { render json: @user }
-      format.html { redirect_to user_path(@user) }
     end
   end
 
