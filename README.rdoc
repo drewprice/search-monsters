@@ -28,5 +28,7 @@ This runs the elasticsearch server, which is supporting the searchkick gem.
 WARNING: this has the potential to impact heroku deployment.
 
 ```bash
+$ brew install elasticsearch
 $ elasticsearch
+$ rake searchkick:reindex CLASS=User
 ```
