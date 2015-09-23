@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :posts
 
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true
+
   before_save :random_setup
 
   def timeline_posts
