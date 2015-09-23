@@ -1,6 +1,6 @@
 require 'will_paginate/array'
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :update]
+  before_action :find_user, only: [:show, :update, :edit]
 
   def index
     if params[:query].present?
@@ -26,18 +26,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    begin
-      @posts = Post.reorder("created_at DESC").where(:user_id => @user.id).page(params[:page]).per_page(Post.num_per_page)
-    rescue
-      flash[:notice] = "Sorry, that user does not exist!"
-      redirect_to root_path
-    end
+    @posts = Post.reorder("created_at DESC").where(:user_id => @user.id).page(params[:page]).per_page(Post.num_per_page)
+  rescue
+    flash[:notice] = "Sorry, that user does not exist!"
+    redirect_to root_path
   end
 
   def update
     @user.update(user_params)
 
     respond_to do |format|
+      format.js
       format.json { render json: @user }
     end
   end
@@ -59,7 +58,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :username, :bio, :image_src)
+    params.require(:user).permit(:email, :password, :username, :bio, :avatar)
   end
 
   def find_user
