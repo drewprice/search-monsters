@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     @user = current_user
     @array = @user.following.map{|user| user.id}
     @array << @user.id
-    @posts = Post.reorder("created_at DESC").where(:user_id => @array).page(params[:page]).per_page(60)
+    @posts = Post.reorder("created_at DESC").where(:user_id => @array).page(params[:page]).per_page(Post.num_per_page)
     @post = Post.new
     render 'posts/index'
   end

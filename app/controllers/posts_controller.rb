@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.reorder("created_at DESC").page(params[:page]).per_page(60)
+    @posts = Post.reorder("created_at DESC").page(params[:page]).per_page(Post.num_per_page)
   end
 
   def create

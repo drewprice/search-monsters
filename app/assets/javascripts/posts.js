@@ -11,9 +11,13 @@ PrivatePub.subscribe('/live-feed', function(data, channel){
 
 
 $( document ).ready(function() {
-  $(window).scroll(function(){
-    if($(window).scrollTop() > $(document).height() - $(window).height() - 50){
-      $.getScript($('.pagination .next_page').attr('href'));
-    }
-  })
+  if ($('.pagination').length){
+    $(window).scroll(function(){
+      url = $('.pagination .next_page').attr('href')
+      if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50){
+        $('.pagination').text('Fetching more pokestuff')
+        $.getScript(url);
+      }
+    })
+  }
 });
