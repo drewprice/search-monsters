@@ -34,6 +34,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    binding.pry
     @user.update(user_params)
 
     respond_to do |format|
