@@ -18,9 +18,9 @@ promise
 
 // instantiate the typeahead UI
 $('.typeahead').typeahead({
-hint: false,
-highlight: true,
-minLength: 0
+  hint: false,
+  highlight: true,
+  minLength: 0
 },{
   name: 'peaches',
   display: 'username',
