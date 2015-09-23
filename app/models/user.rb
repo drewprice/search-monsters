@@ -1,9 +1,12 @@
 class User < ActiveRecord::Base
+  has_secure_password
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   searchkick autocomplete: ['username']
 
-  has_secure_password
   has_many :active_relationships, class_name:  "Relationship",
                                  foreign_key: "follower_id",
                                  dependent: :destroy
@@ -14,8 +17,9 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :posts
 
+
   validates :email, presence: true, uniqueness: true
-  validates :password, length: { minimum: 6}
+  # validates :password, length: { minimum: 6}
 
   before_save :random_setup
 

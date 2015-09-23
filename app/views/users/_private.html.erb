@@ -1,19 +1,17 @@
 <p>
-  <strong>Username:</strong>
-  <%= best_in_place user, :username %> -edit
+  <%= image_tag user.avatar.url(:thumb), id: 'avatar' %>
 </p>
 <p>
-  <strong>Avatar:</strong>
-  <%= best_in_place user, :image_src %> -edit
+  <strong>Username:</strong>
+  <%= best_in_place user, :username %> EDIT ME
 </p>
 <p>
   <strong>Bio:</strong>
-  <%= best_in_place user, :bio %> -edit
+  <%= best_in_place user, :bio %> EDIT ME
 </p>
 ---
-<%= form_for user, html: { multipart: true }, remote: true do |f| %>
-  <%= f.label :file %>
-  <%= f.file_field :file %>
-  <%= f.hidden_field :test, value: 'doododo' %>
-  <%= f.submit %>
+---
+<%= form_for(user, remote: true) do |f| %>
+  <%= f.file_field :avatar %>
+  <%= f.submit 'save' %>
 <% end %>

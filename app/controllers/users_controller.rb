@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :update]
+  before_action :find_user, only: [:show, :update, :edit]
 
   def index
     if params[:query].present?
@@ -25,20 +25,19 @@ class UsersController < ApplicationController
   end
 
   def show
-    begin
-      @posts = @user.posts
-    rescue
-      flash[:notice] = "Sorry, that user does not exist!"
-      redirect_to root_path
-    end
+    @posts = @user.posts
+  rescue
+    flash[:notice] = "Sorry, that user does not exist!"
+    redirect_to root_path
   end
 
   def update
-    binding.pry
     @user.update(user_params)
 
     respond_to do |format|
+      format.js
       format.json { render json: @user }
+      format.html { redirect_to user_path(@user) }
     end
   end
 
@@ -57,7 +56,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :username, :bio, :image_src)
+    params.require(:user).permit(:email, :password, :username, :bio, :image_src, :avatar)
   end
 
   def find_user
