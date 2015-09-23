@@ -1,5 +1,6 @@
 <%= subscribe_to '/live-feed' %>
 
+<%= will_paginate @posts %>
 <h2 id="title">Hi <%= link_to current_user.username, user_path(current_user) %></h2>
 
 <img src="<%= current_user.image_src %>">
