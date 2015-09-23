@@ -1,44 +1,34 @@
-## In development...
-Because of its dependency on a Faye server, you must run this command along with a Rails server:
+== README
 
-```bash
+Capsule Monsters is a Pokemon-themed microblogging community.
+
+##Features:
+* User accounts with authentication and sessions
+* Asymmetric user relationships (following and being following)
+* Dynamic updates with AJAX
+* Real-time main feed
+* Predictive search
+* Infinite scroll
+* Image uploading via AJAX with Paperclip and Remotipart
+* Bootstrap styling
+
+To run this webapp locally, you will need three servers.
+
+```
+$ rails s
+```
+
+Real time updating is dependent on a Faye server:
+
+```
 $ rackup private_pub.ru -s thin -E production
 ```
 
-This runs the elasticsearch server, which is supporting the searchkick gem - this has the potential to impact heroku deployment
+This runs the elasticsearch server, which is supporting the searchkick gem.
+WARNING: this has the potential to impact heroku deployment.
 
 ```bash
 $ brew install elasticsearch
 $ elasticsearch
 $ rake searchkick:reindex CLASS=User
 ```
-
-
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
