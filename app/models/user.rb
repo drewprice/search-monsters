@@ -24,6 +24,27 @@ class User < ActiveRecord::Base
     (timeline_posts += posts).flatten
   end
 
+  def options_for_suggest
+    self.following.map{|user| user.following}.flatten
+  end
+
+  def filtered_suggestions
+    options_for_suggest.select{|user| !user.followers.include?(self)}
+  end
+
+  def sample_suggestions
+      sampled_suggestions = filtered_suggestions.sample(3)
+     if sampled_suggestions.uniq.length < 3
+       sample_suggestions
+     else
+       sampled_suggestions
+     end
+  end
+
+  def get_suggestions
+     sample_suggestions.size < 3 ? User.all.sample(3) : sample_suggestions
+  end
+
   def self.random_image_src
     Dir['public/images/trainers/*'].sample.gsub('public', '')
   end
