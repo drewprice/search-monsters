@@ -5,3 +5,5 @@
 <% end %>
 
 <table id="posts"><%= render @posts.sort_by(&:created_at).reverse %></table>
+
+<%= will_paginate @posts, previous_label: h("<"), next_label: h(">") %>

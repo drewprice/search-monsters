@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :update, :edit]
 
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @posts = @user.posts
+    @posts = Post.reorder("created_at DESC").where(:user_id => @user.id).page(params[:page]).per_page(Post.num_per_page)
   rescue
     flash[:notice] = "Sorry, that user does not exist!"
     redirect_to root_path
@@ -43,7 +44,9 @@ class UsersController < ApplicationController
 
   def timeline
     @user = current_user
-    @posts = @user.timeline_posts
+    @array = @user.following.map{|user| user.id}
+    @array << @user.id
+    @posts = Post.reorder("created_at DESC").where(:user_id => @array).page(params[:page]).per_page(Post.num_per_page)
     @post = Post.new
     render 'posts/index'
   end

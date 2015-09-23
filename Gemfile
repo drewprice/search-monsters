@@ -11,6 +11,7 @@ end
 gem 'elasticsearch-rails'
 gem 'elasticsearch-model'
 gem 'searchkick'
+gem 'will_paginate', '~> 3.0.6'
 # Random generator
 gem 'faker'
 gem 'bazaar'
