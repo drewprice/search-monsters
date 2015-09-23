@@ -1,0 +1,6 @@
+$('#avatar')
+  .fadeOut(function(){
+    $(this).replaceWith('<%= image_tag @user.avatar.url(:thumb), id: "avatar" %>')
+
+    $('#avatar').hide().fadeIn();
+  });
