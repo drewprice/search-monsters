@@ -1,9 +1,8 @@
 <td>
-  <%# TODO: Remove conditional after deleting posts w/o users from DB %>
-  <%= post.user ? (link_to "#{post.user.username}", user_path(post.user))  : 'Guest' %>:
+  <%= link_to "#{post.user.username}", user_path(post.user) %>:
 </td>
-<td class="body-cell">
-  <%= post.body %>
+<td>
+  <span class="public-post-body"><%= post.body %></span>
 </td>
 <td>
   <%= time_ago_in_words post.created_at %> ago

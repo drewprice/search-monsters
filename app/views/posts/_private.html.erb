@@ -1,8 +1,8 @@
 <td>
   <%= link_to "#{post.user.username}", user_path(post.user) %>:
 </td>
-<td class="body-cell">
-  <%= best_in_place post, :body %> - edit
+<td>
+  <span class="post-body"><%= best_in_place post, :body %></span> EDIT ME
 </td>
 <td>
   <%= time_ago_in_words post.created_at %> ago
