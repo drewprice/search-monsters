@@ -28,8 +28,9 @@ class User < ActiveRecord::Base
     (timeline_posts += posts).flatten
   end
 
-  def self.random_image_src
-    Dir['public/images/trainers/*'].sample.gsub('public', '')
+  def self.random_avatar
+    image_path = Dir['public/images/trainers/*'].sample
+    File.open(image_path)
   end
 
   def self.random_username
@@ -52,12 +53,12 @@ class User < ActiveRecord::Base
     Faker::Hacker.say_something_smart
   end
 
-private
+  private
 
   def random_setup
     self.username ||= User.random_username
-    self.image_src ||= User.random_image_src
     self.bio ||= User.random_bio
+    self.avatar = User.random_avatar unless avatar_file_name
   end
 
 end

@@ -2,7 +2,7 @@
 
 <h2 id="title">Hi <%= link_to current_user.username, user_path(current_user) %></h2>
 
-<img src="<%= current_user.image_src %>">
+<%= image_tag current_user.avatar.url(:thumb) %>
 
 <%= link_to "Sign out", sign_out_path, id: 'sign-out-button', class: "btn btn-default", method: 'delete' %>
 
