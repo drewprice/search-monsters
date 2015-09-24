@@ -66,18 +66,9 @@ class User < ActiveRecord::Base
     already_sampled_suggestions = filtered_suggestions.sample(3)
 
     if already_sampled_suggestions.uniq.length < 3
-      sample_suggestions
-    else
-      already_sampled_suggestions
-    end
-  end
-
-  # TODO: Refactor?
-  def get_suggestions
-    if following.length < 1 || sample_suggestions.size < 3
       User.all.sample(3)
     else
-      sample_suggestions
+      already_sampled_suggestions
     end
   end
 
