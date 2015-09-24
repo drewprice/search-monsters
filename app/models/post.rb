@@ -1,5 +1,3 @@
-
-
 class Post < ActiveRecord::Base
   POSTS_PER_PAGE = 20
 
