@@ -1,8 +1,7 @@
 <div class="suggested_followers">
   <strong>Follow suggestions:</strong>
   <ul>
-    <!-- TODO: Refactor; this assignment should happen elsewhere -->
-    <% get_suggestions.sample_suggestions.each do |suggested_user| %>
+    <% current_user.suggestions.top(3).each do |suggested_user| %>
       <li>
         <%= image_tag "#{suggested_user.avatar.url(:post)}" %>
         <%= link_to "#{suggested_user.username}", suggested_user %>

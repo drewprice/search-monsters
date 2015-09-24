@@ -30,11 +30,8 @@
   <body>
     <div class="container-fluid"> <!--  Main Container Div -->
       <div class="row">
-        <div class="col-md-1">
-          <!-- spacing -->
-        </div>
-
         <div class="col-md-9">
+<<<<<<< HEAD
 
           <%= render 'layouts/alert' %>
 
@@ -50,6 +47,13 @@
             <!-- <%= render 'layouts/feed' %> -->
           <% end %>
 
+=======
+
+          <%= render 'layouts/nav' if user_signed_in? %>
+
+          <%= render 'layouts/alert' %>
+
+>>>>>>> master
           <%= yield %>
 
         </div>

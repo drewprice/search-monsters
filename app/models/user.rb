@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  attr_accessor :suggestions
+
   has_many :posts
   has_many :active_relationships,
            class_name:  'Relationship',
@@ -28,7 +30,7 @@ class User < ActiveRecord::Base
                       post: '50x50>'
                     },
                     default_url: '/images/:style/missing.png'
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :avatar, content_type: %r{\Aimage\/.*\Z}
 
   searchkick autocomplete: ['username']
 
@@ -45,21 +47,30 @@ class User < ActiveRecord::Base
     Faker::Hacker.say_something_smart
   end
 
-  # TODO: Refactor?
-  def timeline_posts
-    timeline_posts = following.map { |user| user.posts.map { |post| post } }
-    (timeline_posts += posts).flatten
-  end
-
   def follow(user)
     active_relationships.create(followed_id: user.id) unless following.include?(user)
+    update_relationships
   end
 
   def unfollow(user)
     active_relationships.find_by(followed_id: user.id).destroy if following.include?(user)
+    update_relationships
+  end
+
+  def suggest
+    @suggestions ||= Suggestion.new(self)
   end
 
   private
+
+  def update_suggestions
+    @suggestions = Suggestion.new(self)
+  end
+
+  def update_relationships
+    reload
+    update_suggestions
+  end
 
   # TODO: Refactor such that conditional assignment is not necessary
   def random_setup

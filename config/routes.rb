@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   post 'user/:id', to: 'users#update'
   resources :users
   resources :posts
-
+  get 'users/:id/followers', to: 'users#followers', as: 'user_followers'
+  get 'users/:id/following', to: 'users#following', as: 'user_following'
   delete 'posts/:id', to: 'posts#destroy', as: 'destroy_post'
 end

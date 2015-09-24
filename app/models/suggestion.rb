@@ -1,30 +1,56 @@
 class Suggestion
+  def initialize(user)
+    @user = user
+    @pool = sorted_pool
 
-  attr_reader :list
-
-  def initialize(user_object)
-    #return suggestions array
-    @user = user_object
-    @list = filtered_suggestions
-
+    self
   end
 
-  # TODO: Refactor?
-  def options_for_suggest
-    @suggestion_options = @user.following.map(&:following).flatten
+  def first
+    @pool[0][0]
   end
 
-  # TODO: Refactor?
-  def filtered_suggestions
-    @filtered_suggestions = options_for_suggest.reject { |user| user.followers.include?(@user) }
+  def second
+    @pool[1][0]
   end
 
-  # TODO: Refactor?
-  def sample_suggestions
-    if @list.length < 3
-      User.all.sample(3)
+  def third
+    @pool[2][0]
+  end
+
+  def last
+    @pool.last[0]
+  end
+
+  def top(n = 1)
+    @pool[0...n].map(&:first)
+  end
+
+  def top_three
+    top(3)
+  end
+
+  def sample(n = 1)
+    @pool.sample(n).map(&:first)
+  end
+
+  private
+
+  def generate_pool
+    @user.following.map(&:following).flatten - ([@user] + @user.following)
+  end
+
+  def rank_pool
+    generate_pool.each_with_object(Hash.new(0)) do |suggested_user, rankings|
+      rankings[suggested_user] += 1
+    end.to_a
+  end
+
+  def sorted_pool
+    if @user.following.empty?
+      User.all.sample(5).map { |user| [user, 'unranked'] }
     else
-      @list.sample(3)
+      rank_pool.sort_by(&:last).reverse
     end
   end
 end

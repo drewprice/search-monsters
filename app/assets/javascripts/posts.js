@@ -11,13 +11,20 @@ PrivatePub.subscribe('/live-feed', function(data, channel){
 
 
 $( document ).ready(function() {
-  if ($('.pagination').length){
+  if ( $('.pagination').length ){
     $(window).scroll(function(){
       url = $('.pagination .next_page').attr('href')
-      if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50){
-        $('.pagination').text('Fetching more pokestuff')
+
+      if (url && ( $(window).scrollTop() > $(document).height() - $(window).height() - 500) ){
+        $('.pagination')
+          .html('<p class="loading">Fetching more pokestuff</p>')
+          .hide()
+          .fadeIn('fast', function(){
+            $(this).fadeOut();
+          });
+
         $.getScript(url);
       }
-    })
+    });
   }
 });
