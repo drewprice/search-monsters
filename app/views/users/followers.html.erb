@@ -1,0 +1,9 @@
+<%= render partial: 'user_info', locals: {user: @user} %>
+Followers:
+
+<% @user.followers.each do |follower| %>
+  <li>
+    <%= image_tag "#{follower.avatar.url(:post)}" %>
+    <%= link_to "#{follower.username}", follower %>
+  </li>
+<% end %>

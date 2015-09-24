@@ -4,6 +4,9 @@
   <%= render partial: 'public',  locals: { user: @user } %>
 <% end %>
 
+Following: <%= link_to "#{@user.following.size}", user_following_path, id: 'following' %>
+Followers: <%= link_to "#{@user.followers.size}", user_followers_path, id: 'followers'  %>
+
 <table id="posts"><%= render @posts.sort_by(&:created_at).reverse %></table>
 
 <%= will_paginate @posts, previous_label: h("<"), next_label: h(">") %>
