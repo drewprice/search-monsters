@@ -1,6 +1,9 @@
+require 'will_paginate/array'
+
 class SessionsController < ApplicationController
+
   def index
-    redirect_to posts_path if user_signed_in?
+    @posts = Post.all_for(params[:page])
   end
 
   def new
@@ -12,7 +15,7 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      redirect_to posts_path
+      redirect_to root_path
     else
       redirect_to root_path, alert: 'Something was not correct. Do it again, yo.'
     end
