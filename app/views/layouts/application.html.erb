@@ -57,8 +57,7 @@
               <strong>Follow suggestions:</strong>
               <ul>
                 <!-- TODO: Refactor; this assignment should happen elsewhere -->
-                <% suggestions = current_user.sample_suggestions %>
-                <% suggestions.each do |suggested_user| %>
+                <% get_suggestions.sample_suggestions.each do |suggested_user| %>
                   <li>
                     <%= image_tag "#{suggested_user.avatar.url(:post)}" %>
                     <%= link_to "#{suggested_user.username}", suggested_user %>

@@ -51,25 +51,6 @@ class User < ActiveRecord::Base
     (timeline_posts += posts).flatten
   end
 
-  # TODO: Refactor?
-  def options_for_suggest
-    following.map(&:following).flatten
-  end
-
-  # TODO: Refactor?
-  def filtered_suggestions
-    options_for_suggest.reject { |user| user.followers.include?(self) }
-  end
-
-  # TODO: Refactor?
-  def sample_suggestions(suggestions_array)
-    if suggestions_array.length < 3
-      User.all.sample(3)
-    else
-      suggestions_array.sample(3)
-    end
-  end
-
   def follow(user)
     active_relationships.create(followed_id: user.id) unless following.include?(user)
   end
