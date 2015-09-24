@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
+
   def index
-    redirect_to posts_path if user_signed_in?
+    @posts = Post.all_for(params[:page])
   end
 
   def new
@@ -12,7 +13,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:user][:password])
       @user.suggest
       session[:user_id] = @user.id
-      redirect_to posts_path
+      redirect_to root_path
     else
       flash[:notice] = 'Your email or password was incorrect. Please try again.'
       redirect_to root_path

@@ -1,6 +1,3 @@
-# TODO: What is this require about?
-require 'will_paginate/array'
-
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :update, :edit, :followers, :following]
 
@@ -27,7 +24,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to posts_path
     else
       if @user.errors.messages == {:password=>["can't be blank"]}
         flash[:notice] = "Please enter a password."
@@ -36,8 +32,8 @@ class UsersController < ApplicationController
       else
         flash[:notice] = @user.errors.messages
       end
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 
   def update
@@ -56,7 +52,7 @@ class UsersController < ApplicationController
       @array = @user.following.map(&:id)
       @array << @user.id
       @posts = Post.reorder('created_at DESC').where(user_id: @array).page(params[:page]).per_page(Post::POSTS_PER_PAGE)
-      render 'posts/index'
+      render 'sessions/index'
     else
       redirect_to root_path
     end
