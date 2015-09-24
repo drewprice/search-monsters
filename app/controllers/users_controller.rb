@@ -28,6 +28,9 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       redirect_to posts_path
+    elsif @user.errors.messages == {:password=>["can't be blank"]}
+      flash[:notice] = "Please enter a password."
+      redirect_to root_path
     else
       flash[:notice] = @user.errors.messages
       redirect_to root_path
