@@ -35,46 +35,15 @@
         </div>
 
         <div class="col-md-9">
-          <div class="goodPlayer">
-            <audio id="player" src="/media/PokemonTVThemeSongFull.mp3"></audio>
-            <img onclick="playPause()" src="/images/pokeball.png" alt="Pokemon Logo" id="pokelogo" height="50px;" width="50px;" class: "img-responsive poke_logo_image">
-            <a id="bad" style="cursor: pointer;">I'm a bad guy</a>
-          </div>
-
-          <div class="badPlayer" style="display: none;">
-            <audio id="player2" src="/media/TeamRocketThemeSong.mp3"></audio>
-            <img onclick="playPause2()" src="/images/team_rocket_pokeball.png" alt="Pokemon Logo" id="pokelogo" height="50px;" width="50px;" class: "img-responsive poke_logo_image">
-            <a id="good" style="cursor: pointer;">I would prefer to be a good guy</a>
-          </div>
-
-          <!-- TODO: Refactor; crazy nesting -->
           <% if user_signed_in? %>
+            <%= render 'layouts/pokeball' %>
+
             <%= link_to "Pokéwall", posts_path, class: "btn btn-default" %>
             <%= link_to "PokéPalz", timeline_path, class: "btn btn-default" if current_user %>
             <%= link_to "Sign out", sign_out_path, id: 'sign-out-button', class: "btn btn-default", method: 'delete' %>
 
-            <div class="suggested_followers">
-              <strong>Follow suggestions:</strong>
-              <ul>
-                <!-- TODO: Refactor; this assignment should happen elsewhere -->
-                <% suggestions = current_user.get_suggestions %>
-                <% suggestions.each do |suggested_user| %>
-                  <li>
-                    <%= image_tag "#{suggested_user.avatar.url(:post)}" %>
-                    <%= link_to "#{suggested_user.username}", suggested_user %>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-
-            <div class="users-search" id="remote">
-              <%= form_tag users_path, method: :get do %>
-                <div class="form-group">
-                  <%= text_field_tag :query, params[:query], class: 'form-control typeahead', autocomplete: "off", placeholder: "Search" %>
-                  <%= submit_tag 'Search', class: 'btn btn-primary' %>
-                </div>
-              <% end %>
-            </div>
+            <%= render 'shared/suggestion' %>
+            <%= render 'layouts/search' %>
           <% end %>
 
           <!-- TODO: Fix; something weird is happening? -->
