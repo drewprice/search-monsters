@@ -1,5 +1,3 @@
-require 'will_paginate/array'
-
 class SessionsController < ApplicationController
 
   def index
