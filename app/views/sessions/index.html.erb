@@ -1,21 +1,17 @@
-<% if !user_signed_in? %>
-<h2 id="title">Hi.</h2>
-
-<%= render 'sessions/status' %>
-<% end %>
-
 <% if user_signed_in? %>
+  <%= subscribe_to '/live-feed' %>
 
-<%= subscribe_to '/live-feed' %>
+  <h2 id="title">Hi <%= link_to current_user.username, user_path(current_user) %></h2>
 
-<h2 id="title">Hi <%= link_to current_user.username, user_path(current_user) %></h2>
+  <%= image_tag current_user.avatar.url(:thumb) %>
 
-<%= image_tag current_user.avatar.url(:thumb) %>
+  <%= render 'posts/form' %>
 
-<%= render 'posts/form' %>
+  <table id="posts" class="table"><%= render @posts.sort_by(&:created_at).reverse %></table>
 
-<table id="posts" class="table"><%= render @posts.sort_by(&:created_at).reverse %></table>
+  <%= will_paginate @posts, previous_label: h("<"), next_label: h(">") %>
+<% else %>
+  <h2 id="title">Hi.</h2>
 
-<%= will_paginate @posts, previous_label: h("<"), next_label: h(">") %>
-
+  <%= render 'sessions/status' %>
 <% end %>
