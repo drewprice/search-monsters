@@ -48,11 +48,15 @@ class UsersController < ApplicationController
 
   def timeline
     # TODO: refactor
-    @user = current_user
-    @array = @user.following.map(&:id)
-    @array << @user.id
-    @posts = Post.reorder('created_at DESC').where(user_id: @array).page(params[:page]).per_page(Post::POSTS_PER_PAGE)
-    render 'posts/index'
+    if current_user
+      @user = current_user
+      @array = @user.following.map(&:id)
+      @array << @user.id
+      @posts = Post.reorder('created_at DESC').where(user_id: @array).page(params[:page]).per_page(Post::POSTS_PER_PAGE)
+      render 'posts/index'
+    else
+      redirect_to root_path
+    end
   end
 
   def autocomplete
