@@ -13,7 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.remotipart
+//= require jquery.jpanelmenu.min.js
 //= require bootstrap-sprockets
+//= require fastclick
 //= require private_pub
 //= require best_in_place
 //= require turbolinks
