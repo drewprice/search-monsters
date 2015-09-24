@@ -4,13 +4,13 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :active_relationships,
-              class_name:  "Relationship",
-              foreign_key: "follower_id",
-              dependent: :destroy
+           class_name:  'Relationship',
+           foreign_key: 'follower_id',
+           dependent: :destroy
   has_many :passive_relationships,
-              class_name:  "Relationship",
-              foreign_key: "followed_id",
-              dependent: :destroy
+           class_name:  'Relationship',
+           foreign_key: 'followed_id',
+           dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
@@ -22,12 +22,12 @@ class User < ActiveRecord::Base
 
   has_secure_password
   has_attached_file :avatar,
-                      styles: {
-                        medium: "300x300>",
-                        thumb: "100x100>",
-                        post: "50x50>"
-                      },
-                      default_url: "/images/:style/missing.png"
+                    styles: {
+                      medium: '300x300>',
+                      thumb: '100x100>',
+                      post: '50x50>'
+                    },
+                    default_url: '/images/:style/missing.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   searchkick autocomplete: ['username']
@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   end
 
   def self.random_username
-    Bazaar.object.split.map{|word| word.capitalize }.join(" ")
+    Bazaar.object.split.map(&:capitalize).join(' ')
   end
 
   def self.random_bio
@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
 
   # TODO: Refactor?
   def options_for_suggest
-    self.following.map { |user| user.following }.flatten
+    following.map(&:following).flatten
   end
 
   # TODO: Refactor?

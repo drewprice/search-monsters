@@ -23,7 +23,7 @@ class PostsController < ApplicationController
         PrivatePub.publish_to('/live-feed', message: @post)
         format.json { render json: @post }
       else
-        format.json { render js: 'alert("Try again!");'}
+        format.json { render js: 'alert("Try again!");' }
       end
     end
   end

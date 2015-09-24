@@ -6,16 +6,16 @@ class UsersController < ApplicationController
 
   def index
     if params[:query].present?
-       @users = User.search(params[:query])
+      @users = User.search(params[:query])
     else
-       @users = User.all
+      @users = User.all
     end
   end
 
   def show
-    @posts = Post.reorder("created_at DESC").where(:user_id => @user.id).page(params[:page]).per_page(Post::POSTS_PER_PAGE)
+    @posts = Post.reorder('created_at DESC').where(user_id: @user.id).page(params[:page]).per_page(Post::POSTS_PER_PAGE)
   rescue
-    flash[:notice] = "Sorry, that user does not exist!"
+    flash[:notice] = 'Sorry, that user does not exist!'
     redirect_to root_path
   end
 
@@ -48,13 +48,13 @@ class UsersController < ApplicationController
     @user = current_user
     @array = @user.following.map(&:id)
     @array << @user.id
-    @posts = Post.reorder("created_at DESC").where(user_id: @array).page(params[:page]).per_page(Post::POSTS_PER_PAGE)
+    @posts = Post.reorder('created_at DESC').where(user_id: @array).page(params[:page]).per_page(Post::POSTS_PER_PAGE)
     render 'posts/index'
   end
 
   def autocomplete
-   values = User.search(params[:query], autocomplete: false, limit: 10).map { |u| { username: u.username } }
-   render json: values
+    values = User.search(params[:query], autocomplete: false, limit: 10).map { |u| { username: u.username } }
+    render json: values
   end
 
   private
