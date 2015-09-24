@@ -1,6 +1,3 @@
-# TODO: What is this require about?
-# require 'will_paginate/array'
-
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :update, :edit, :followers, :following]
 
