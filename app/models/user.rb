@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  attr_accessor :suggestions
+
   has_many :posts
   has_many :active_relationships,
            class_name:  'Relationship',
@@ -28,7 +30,7 @@ class User < ActiveRecord::Base
                       post: '50x50>'
                     },
                     default_url: '/images/:style/missing.png'
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :avatar, content_type: %r{\Aimage\/.*\Z}
 
   searchkick autocomplete: ['username']
 
@@ -45,51 +47,26 @@ class User < ActiveRecord::Base
     Faker::Hacker.say_something_smart
   end
 
-  # TODO: Refactor?
-  def timeline_posts
-    timeline_posts = following.map { |user| user.posts.map { |post| post } }
-    (timeline_posts += posts).flatten
-  end
-
-  # TODO: Refactor?
-  def options_for_suggest
-    following.map(&:following).flatten
-  end
-
-  # TODO: Refactor?
-  def filtered_suggestions
-    options_for_suggest.reject { |user| user.followers.include?(self) }
-  end
-
-  # TODO: Refactor?
-  def sample_suggestions
-    already_sampled_suggestions = filtered_suggestions.sample(3)
-
-    if already_sampled_suggestions.uniq.length < 3
-      sample_suggestions
-    else
-      already_sampled_suggestions
-    end
-  end
-
-  # TODO: Refactor?
-  def get_suggestions
-    if following.length < 1 || sample_suggestions.size < 3
-      User.all.sample(3)
-    else
-      sample_suggestions
-    end
-  end
-
   def follow(user)
-    active_relationships.create(followed_id: user.id) unless following.include?(user)
+    active_relationships.create(user) unless following.include?(user)
+    update_relationships
   end
 
   def unfollow(user)
     active_relationships.find_by(followed_id: user.id).destroy if following.include?(user)
+    update_relationships
   end
 
   private
+
+  def suggest
+    @suggestions = Suggestion.new(self)
+  end
+
+  def update_relationships
+    reload
+    suggest
+  end
 
   # TODO: Refactor such that conditional assignment is not necessary
   def random_setup
