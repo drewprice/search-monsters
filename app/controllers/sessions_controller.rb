@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
 
   def index
     @posts = Post.all_for(params[:page])
-    
   end
 
   def new
