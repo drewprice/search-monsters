@@ -1,3 +1,5 @@
+<%= render partial: 'user_info', locals: {user: @user} %>
+
 Following:
 
 <% @user.following.each do |follower| %>

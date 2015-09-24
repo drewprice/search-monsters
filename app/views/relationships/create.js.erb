@@ -1,1 +1,3 @@
 $('#followbutton').replaceWith('<%= j render partial: 'shared/unfollow_button', locals: {user: @other_user} %>');
+var newFollowerCount  = Number($('#followers').text()) + 1
+$('#followers').text(newFollowerCount)
