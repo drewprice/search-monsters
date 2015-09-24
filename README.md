@@ -1,5 +1,3 @@
-== README
-
 Capsule Monsters is a Pokemon-themed microblogging community.
 
 ##Features:
