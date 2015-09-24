@@ -2,7 +2,7 @@
 require 'will_paginate/array'
 
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :update, :edit]
+  before_action :find_user, only: [:show, :update, :edit, :followers, :following]
 
   def index
     if params[:query].present?
