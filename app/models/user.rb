@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   end
 
   def follow(user)
-    active_relationships.create(user) unless following.include?(user)
+    active_relationships.create(followed_id: user.id) unless following.include?(user)
     update_relationships
   end
 
@@ -57,15 +57,19 @@ class User < ActiveRecord::Base
     update_relationships
   end
 
+  def suggest
+    @suggestions ||= Suggestion.new(self)
+  end
+
   private
 
-  def suggest
+  def update_suggestions
     @suggestions = Suggestion.new(self)
   end
 
   def update_relationships
     reload
-    suggest
+    update_suggestions
   end
 
   # TODO: Refactor such that conditional assignment is not necessary

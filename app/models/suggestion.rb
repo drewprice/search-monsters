@@ -47,6 +47,10 @@ class Suggestion
   end
 
   def sorted_pool
-    rank_pool.sort_by(&:last).reverse
+    if @user.following.empty?
+      User.all.sample(5).map { |user| [user, 'unranked'] }
+    else
+      rank_pool.sort_by(&:last).reverse
+    end
   end
 end
