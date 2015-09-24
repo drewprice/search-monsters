@@ -1,5 +1,5 @@
 100.times do
-  User.create(email: Faker::Internet.email, password: "password")
+  User.create(email: Faker::Internet.email, password: 'password')
 end
 
 1000.times do
@@ -7,5 +7,5 @@ end
 end
 
 800.times do
- User.find(rand(1..100)).follow(User.find(rand(1..100)))
+  User.find(rand(1..100)).follow(User.find(rand(1..100)))
 end

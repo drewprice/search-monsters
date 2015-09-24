@@ -11,39 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923202147) do
-
+ActiveRecord::Schema.define(version: 20_150_923_202_147) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "posts", force: :cascade do |t|
-    t.string   "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
+  create_table 'posts', force: :cascade do |t|
+    t.string 'body'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.integer 'user_id'
   end
 
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+  add_index 'posts', ['user_id'], name: 'index_posts_on_user_id', using: :btree
 
-  create_table "relationships", force: :cascade do |t|
-    t.integer  "followed_id"
-    t.integer  "follower_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table 'relationships', force: :cascade do |t|
+    t.integer 'followed_id'
+    t.integer 'follower_id'
+    t.datetime 'created_at',  null: false
+    t.datetime 'updated_at',  null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "password_digest"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.string   "bio"
-    t.string   "email"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
+  create_table 'users', force: :cascade do |t|
+    t.string 'username'
+    t.string 'password_digest'
+    t.datetime 'created_at',          null: false
+    t.datetime 'updated_at',          null: false
+    t.string 'bio'
+    t.string 'email'
+    t.string 'avatar_file_name'
+    t.string 'avatar_content_type'
+    t.integer 'avatar_file_size'
+    t.datetime 'avatar_updated_at'
   end
 
-  add_foreign_key "posts", "users"
+  add_foreign_key 'posts', 'users'
 end

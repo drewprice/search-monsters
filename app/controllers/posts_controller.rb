@@ -2,36 +2,34 @@ class PostsController < ApplicationController
   before_action :assign_post, only: [:edit, :destroy, :update]
 
   def index
-    @post = Post.new
-    @posts = Post.reorder("created_at DESC").page(params[:page]).per_page(Post.num_per_page)
+    @posts = Post.all_for(params[:page])
   end
 
   def create
     @post = current_user.posts.new(post_params)
+
     respond_to do |format|
       if @post.save
-        format.js {render 'posts/create'}
+        format.js { render 'posts/create' }
       else
         format.js { render 'posts/error' }
       end
     end
   end
 
-  def edit
-  end
-
   def update
-    @post.update(post_params)
-
-    PrivatePub.publish_to('/live-feed', message: @post)
-
     respond_to do |format|
-      format.json { render json: @post }
+      if @post.update(post_params)
+        PrivatePub.publish_to('/live-feed', message: @post)
+        format.json { render json: @post }
+      else
+        format.json { render js: 'alert("Try again!");' }
+      end
     end
   end
 
   def destroy
-    @post.destroy
+    render js: 'alert("Try again!");' unless @post.destroy
   end
 
   private

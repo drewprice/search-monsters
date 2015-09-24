@@ -1,5 +1,4 @@
 class RelationshipsController < ApplicationController
-
   def create
     @other_user = User.find(params[:id])
     current_user.follow(@other_user)
@@ -11,5 +10,4 @@ class RelationshipsController < ApplicationController
     current_user.unfollow(@other_user)
     current_user.reload
   end
-
 end

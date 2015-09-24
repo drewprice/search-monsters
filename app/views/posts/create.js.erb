@@ -7,7 +7,7 @@
     .fadeIn();
 <% end %>
 
-// TODO: Make it fade in?
+// TODO: fadeIn?
 $('#post-<%= @post.id %>')
   .replaceWith('<tr id="post-<%= @post.id %>"><%= j render partial: "private", locals: { post: @post } %></tr>');
 

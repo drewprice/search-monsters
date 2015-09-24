@@ -1,16 +1,11 @@
 <%= subscribe_to '/live-feed' %>
 
-
 <h2 id="title">Hi <%= link_to current_user.username, user_path(current_user) %></h2>
 
 <%= image_tag current_user.avatar.url(:thumb) %>
 
-<%= link_to "Sign out", sign_out_path, id: 'sign-out-button', class: "btn btn-default", method: 'delete' %>
-
-<%= render 'posts/form' if user_signed_in? %>
-
+<%= render 'posts/form' %>
 
 <table id="posts" class="table"><%= render @posts.sort_by(&:created_at).reverse %></table>
-
 
 <%= will_paginate @posts, previous_label: h("<"), next_label: h(">") %>
