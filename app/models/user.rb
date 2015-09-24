@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
 
   # TODO: Refactor?
   def filtered_suggestions
-    options_for_suggest.select { |user| !user.followers.include?(self) }
+    options_for_suggest.reject { |user| user.followers.include?(self) }
   end
 
   # TODO: Refactor?
