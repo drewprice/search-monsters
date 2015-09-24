@@ -1,0 +1,8 @@
+<%= render 'layouts/pokeball' %>
+
+<%= link_to "Pokéwall", posts_path, class: "btn btn-default" %>
+<%= link_to "PokéPalz", timeline_path, class: "btn btn-default" if current_user %>
+<%= link_to "Sign out", sign_out_path, id: 'sign-out-button', class: "btn btn-default", method: 'delete' %>
+
+<%= render 'shared/suggestion' %>
+<%= render 'layouts/search' %>

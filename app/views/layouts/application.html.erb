@@ -30,23 +30,12 @@
   <body>
     <div class="container-fluid"> <!--  Main Container Div -->
       <div class="row">
-        <div class="col-md-1">
-          <!-- spacing -->
-        </div>
-
         <div class="col-md-9">
-          <% if user_signed_in? %>
-            <%= render 'layouts/pokeball' %>
 
-            <%= link_to "Pokéwall", posts_path, class: "btn btn-default" %>
-            <%= link_to "PokéPalz", timeline_path, class: "btn btn-default" if current_user %>
-            <%= link_to "Sign out", sign_out_path, id: 'sign-out-button', class: "btn btn-default", method: 'delete' %>
-
-            <%= render 'shared/suggestion' %>
-            <%= render 'layouts/search' %>
-          <% end %>
+          <%= render 'layouts/nav' if user_signed_in? %>
 
           <%= render 'layouts/alert' %>
+
           <%= yield %>
 
         </div>
