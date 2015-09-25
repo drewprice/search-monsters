@@ -1,5 +1,5 @@
 <% publish_to '/live-feed' do %>
-  $('.home-page-posts')
+  $('#posts')
     .prepend('<article class="post" id="post-<%= @post.id %>"><%= j render partial: "public", locals: { post: @post } %></article>');
 
   $('#post-<%= @post.id %>')

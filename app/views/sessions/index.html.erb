@@ -6,7 +6,7 @@
   <%= image_tag current_user.avatar.url(:thumb) %>
 
   <%= render 'posts/form' %>
-      <div class="home-page-posts animated fadeIn ">
+      <div id="posts" class="home-page-posts animated fadeIn ">
           <%= render @posts.sort_by(&:created_at).reverse %>
       </div><!-- Home page posts -->
 
