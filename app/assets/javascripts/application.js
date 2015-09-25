@@ -11,13 +11,16 @@
 // about supported directives.
 //
 //= require jquery
+//= require modernizr.custom.32229-2.8-respondjs-1-4-2
 //= require jquery_ujs
 //= require jquery.remotipart
-//= require jquery.jpanelmenu.min.js
+//= require jquery.jpanelmenu.min
 //= require bootstrap-sprockets
 //= require fastclick
+//= require main
 //= require private_pub
 //= require best_in_place
 //= require turbolinks
+
 
 //= require_tree .
