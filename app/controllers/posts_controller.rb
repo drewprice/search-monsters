@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all_for(params[:page])
+    @timeline_posts = current_user.timeline_posts(params[:page])
   end
 
   def create
