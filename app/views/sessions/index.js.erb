@@ -1,4 +1,4 @@
-$('#posts').append('<%= j render(@posts) %>')
+$('.home-page-posts').append('<%= j render(@posts) %>')
 
 <% if @posts.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate(@posts)%>')

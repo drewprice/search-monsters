@@ -1,12 +1,13 @@
-<td>
-  <%= image_tag post.user.avatar.url(:post) %>
-</td>
-<td>
-  <%= link_to "#{post.user.username}", user_path(post.user) %>:
-</td>
-<td>
-  <span class="public-post-body"><%= post.body %></span>
-</td>
-<td>
-  <%= time_ago_in_words post.created_at %> ago
-</td>
+<div class="post-preview col-xs-10  no-gutter">
+    <p class="public-post-body"><%= post.body %></p>
+
+    <p class="meta">
+        <%= link_to "#{post.user.username}", user_path(post.user) %>
+        <i class="link-spacer"></i>
+        <%= time_ago_in_words post.created_at %> ago
+    </p>
+</div>
+
+<div class=" col-xs-2  no-gutter">
+    <%= image_tag post.user.avatar.url(:post), class: "user-icon", alt: "user-image" %>
+</div>

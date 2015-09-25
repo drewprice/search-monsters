@@ -6,11 +6,12 @@
   <%= image_tag current_user.avatar.url(:thumb) %>
 
   <%= render 'posts/form' %>
-
-  <table id="posts" class="table"><%= render @posts.sort_by(&:created_at).reverse %></table>
+      <div class="home-page-posts animated fadeIn ">
+          <%= render @posts.sort_by(&:created_at).reverse %>
+      </div><!-- Home page posts -->
 
   <%= will_paginate @posts, previous_label: h("<"), next_label: h(">") %>
-<% else %>
+  <% else %>
   <h2 id="title">Hi.</h2>
 
   <%= render 'sessions/status' %>
