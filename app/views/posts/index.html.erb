@@ -1,34 +1,20 @@
-
-
-<% if user_signed_in? %>
+<%= subscribe_to '/live-feed' %>
 <div class="sub-nav">
     <a href="#" class="select-posts active">PokéPostz</a>
     <a href="#" class="select-categories">PokéPostz</a>
-    <%# link_to "PokéPalz", timeline_path, remote: true, class: "select-categories" %>
 </div>
-  <%= subscribe_to '/live-feed' %>
 
-  <h2 id="title">Hi <%= link_to current_user.username, user_path(current_user) %></h2>
 
-  <%= image_tag current_user.avatar.url(:thumb) %>
+<h2 id="title">Hi <%= link_to current_user.username, user_path(current_user) %></h2>
 
-  <%= render 'posts/form' %>
-      <div id="posts" class="home-page-posts animated fadeIn ">
-          <%= render @posts.sort_by(&:created_at).reverse %>
-      </div><!-- Home page posts -->
+<%= image_tag current_user.avatar.url(:thumb) %>
 
-      <div class="home-page-categories hide animated fadeIn ">
-          <div class="category row">
-                <% @timeline_posts.each do |post| %>
-                   <%= render partial: "post", locals: {post: post} %>
-                <% end %>
-          </div>
-      </div>
+<%= render 'posts/form' %>
 
-  <%= will_paginate @posts, previous_label: h("<"), next_label: h(">") %>
+<div id="posts" class="home-page-posts animated fadeIn ">
+    <%= render partial: 'posts', locals: {posts: @posts} %>
+</div>
 
-  <% else %>
-  <h2 id="title">Hi.</h2>
-
-  <%= render 'sessions/status' %>
-<% end %>
+<div class="home-page-categories hide animated fadeIn ">
+      <%= render partial: 'posts', locals: {posts: @timeline_posts} %>
+</div>

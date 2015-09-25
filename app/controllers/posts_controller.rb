@@ -2,8 +2,12 @@ class PostsController < ApplicationController
   before_action :assign_post, only: [:edit, :destroy, :update]
 
   def index
-    @posts = Post.all_for(params[:page])
-    @timeline_posts = current_user.timeline_posts(params[:page])
+    if user_signed_in?
+      @posts = Post.all_for(params[:page])
+      @timeline_posts = current_user.timeline_posts(params[:page])
+    else
+      render 'sessions/_status'
+    end
   end
 
   def create

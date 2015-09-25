@@ -3,7 +3,7 @@
   <ul>
     <% current_user.suggestions.top(3).each do |suggested_user| %>
       <li>
-        <%= image_tag "#{suggested_user.avatar.url(:post)}" %>
+        <%= image_tag "#{suggested_user.avatar.url(:post)}", class: "user-icon" %>
         <%= link_to "#{suggested_user.username}", suggested_user %>
       </li>
     <% end %>
