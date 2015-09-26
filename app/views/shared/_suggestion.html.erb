@@ -1,10 +1,9 @@
 <div class="suggested_followers">
-  <strong>Follow suggestions:</strong>
   <ul>
     <% current_user.suggestions.top(3).each do |suggested_user| %>
-      <li>
-        <%= image_tag "#{suggested_user.avatar.url(:post)}", class: "user-icon" %>
-        <%= link_to "#{suggested_user.username}", suggested_user %>
+      <li class="suggested_followers">
+        <%= image_tag "#{suggested_user.avatar.url(:post)}", class: "suggested-icon" %>
+        <%= link_to "#{suggested_user.username}", suggested_user, class: "" %>
       </li>
     <% end %>
   </ul>

@@ -8,12 +8,11 @@
     </ul>
     <hr>
     <ul>
-
-
-        <li style="color: white;"><%= render 'shared/suggestion' %></li>
-
-        <li><i class="fa fa-home"></i> <%= render 'layouts/search' %></li>
-        <li><i class="fa fa-image"></i><a href="category.html">Category Page</a></li>
+        <li class="follower_suggestions">
+          <i class="fa fa-anchor"></i>
+          <span>Follow suggestions</span>
+          <%= render 'shared/suggestion' %>
+        </li>
     </ul>
 </div>
 
@@ -40,8 +39,7 @@
     <!-- end no script -->
     <div class="site-info">
         <div class="primary-info">
-            <h1>Writer</h1>
-            <p>A minimal blogging theme to put your content on show. <a href="post.html">Look at the features.</a> </p>
+            <h1>Capsule Monsters</h1>
             <p><%= render 'layouts/pokeball' %></p>
         </div>
         <div class="secondary-info">

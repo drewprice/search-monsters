@@ -878,7 +878,7 @@ ol li {
   font-size: 1.4rem;
 }
 /* line 30, ../sass/partials/_menu.sass */
-#jPanelMenu-menu li a {
+#jPanelMenu-menu li a, span {
   color: #DADADA;
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-weight: 700;
