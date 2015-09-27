@@ -1,45 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-<html>
+<html class="no-js">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>CAPSULE | monsters</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width">
+      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <!-- Google Analytics script -->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-67905983-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-    <!-- End Google Analytics script -->
+      <%= favicon_link_tag 'favicon.ico' %>
 
-    <title>Capsule Monsters</title>
+      <!-- Google Analytics script -->
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-67905983-1', 'auto');
+        ga('send', 'pageview');
+      </script>
+      <!-- End Google Analytics script -->
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
 
-    <script type="text/javascript" src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+      <!--[if lt IE 9]>
+          <script src="/js/vendor/html5shiv.min.js"></script>
+      <![endif]-->
+    <!-- <script type="text/javascript" src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script> -->
   </head>
-
   <body>
-    <div class="container-fluid"> <!--  Main Container Div -->
+    <main class="container left-container">
       <div class="row">
-        <div class="col-md-9">
-
-          <%= render 'layouts/nav' if user_signed_in? %>
-
-          <%= render 'layouts/alert' %>
-
-          <%= yield %>
-
-        </div>
-      </div>
-    </div> <!-- end main container div -->
+        <%= render 'layouts/sidebar' if user_signed_in? %>
+        <%# render 'layouts/alert' %>
+        <%= yield %>
+      </div> <!--/row -->
+    </main> <!-- /container -->
   </body>
 </html>

@@ -61,6 +61,12 @@ class User < ActiveRecord::Base
     @suggestions ||= Suggestion.new(self)
   end
 
+  def timeline_posts(page)
+    @users_followers = following.map(&:id) << self.id
+    # @users_followers << self.id
+    @timeline_posts = Post.reorder('created_at DESC').where(user_id: @users_followers).page(page).per_page(Post::POSTS_PER_PAGE)
+  end
+
   private
 
   def update_suggestions
