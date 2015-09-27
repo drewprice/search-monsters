@@ -6,7 +6,7 @@ class PostsController < ApplicationController
       @posts = Post.all_for(params[:page])
       @timeline_posts = current_user.timeline_posts(params[:page])
     else
-      render 'sessions/_status'
+      redirect_to sign_in_path
     end
   end
 

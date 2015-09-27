@@ -1,20 +1,22 @@
 <%= subscribe_to '/live-feed' %>
-<div class="sub-nav">
-    <a href="#" class="select-posts active">PokéPostz</a>
-    <a href="#" class="select-categories">PokéPalz</a>
-</div>
 
+<section class="col-md-7 col-sm-12 col-md-offset-5 main-content">
+  <div class="sub-nav">
+      <a href="#" class="select-posts active">PokéPostz</a>
+      <a href="#" class="select-categories">PokéPalz</a>
+  </div>
 
-<h2 id="title">Hi <%= link_to current_user.username, user_path(current_user) %></h2>
+  <h2 id="title">Hi <%= link_to current_user.username, user_path(current_user) %></h2>
 
-<%= image_tag current_user.avatar.url(:thumb) %>
+  <%= image_tag current_user.avatar.url(:thumb) %>
 
-<%= render 'posts/form' %>
+  <%= render 'posts/form' %>
 
-<div id="posts" class="home-page-posts animated fadeIn ">
-    <%= render partial: 'posts', locals: {posts: @posts} %>
-</div>
+  <div id="posts" class="home-page-posts animated fadeIn ">
+      <%= render partial: 'posts', locals: {posts: @posts} %>
+  </div>
 
-<div class="home-page-categories hide animated fadeIn ">
-      <%= render partial: 'posts', locals: {posts: @timeline_posts} %>
-</div>
+  <div class="home-page-categories hide animated fadeIn ">
+        <%= render partial: 'posts', locals: {posts: @timeline_posts} %>
+  </div>
+</section><!-- main content -->
