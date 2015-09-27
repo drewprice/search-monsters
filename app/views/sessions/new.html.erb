@@ -1,0 +1,18 @@
+<section class="sidebar col-md-5 col-sm-12" style="background-image: url(<%= asset_path 'defaultfavoritessidebar' %>)">
+    <div class="site-info">
+      <div class="primary-info">
+        <h1>Capsule Monsters</h1>
+        <p>You want to be the very best, like no one ever was.</p>
+      </div>
+      <div class="secondary-info">
+        <p>
+          <%= render 'users/new_button' %>
+         </p>
+      </div>
+    </div>
+</section>
+
+<div class="col-md-7 col-sm-12 col-md-offset-5 main-content">
+  <%= render 'form' %>
+  <%= render 'shared/footer' %>
+</div><!-- main content -->
