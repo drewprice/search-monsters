@@ -979,7 +979,7 @@ ol li {
 }
 /* line 36, ../sass/partials/_sidebar.sass */
 .sidebar .site-info h1 {
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  /*text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);*/
   letter-spacing: -2pt;
   margin-bottom: 0;
 }

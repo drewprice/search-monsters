@@ -9,23 +9,23 @@
           <%= link_to "#{current_user.username}", current_user %>
         </li>
         <li>
-          <i class="fa fa-anchor"></i>
-          <%= link_to "My Followers", user_followers_path(current_user) %>
+          <i class="fa fa-users"></i>
+          <%= link_to "Followers", user_followers_path(current_user) %>
         </li>
         <li>
           <i class="fa fa-star"></i>
-          <%= link_to "My Following", user_following_path(current_user) %>
+          <%= link_to "Following", user_following_path(current_user) %>
         </li>
         <li>
-          <i class="fa fa-paper-plane"></i>
-          <%= link_to "Sign Out", sign_out_path, method: 'delete' %>
+          <i class="fa fa-sign-out"></i>
+          <%= link_to "Sign out", sign_out_path, method: 'delete' %>
         </li>
     </ul>
     <hr>
     <ul>
         <li class="follower_suggestions">
-          <i class="fa fa-anchor"></i>
-          <strong><span>Follow suggestions</span></strong>
+          <i class="fa fa-user-plus"></i>
+          <span id="suggestion-title">Follow the following?</span>
           <%= render 'shared/suggestion' %>
         </li>
     </ul>
@@ -54,8 +54,7 @@
     <!-- end no script -->
     <div class="site-info">
         <div class="primary-info">
-            <h1>Capsule Monsters</h1>
-            <p><%= render 'layouts/pokeball' %></p>
+            <h1>Capsule Monsters<%= render 'layouts/pokeball' %></h1>
         </div>
         <div class="secondary-info">
             <p><%= render 'layouts/search' %></p>

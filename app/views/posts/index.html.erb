@@ -1,17 +1,15 @@
 <%= subscribe_to '/live-feed' %>
 
 <section class="col-md-7 col-sm-12 col-md-offset-5 main-content">
-  <div class="sub-nav">
-      <a href="#" class="select-posts active">PokéPostz</a>
-      <a href="#" class="select-categories">PokéPalz</a>
-  </div>
-
-  <h2 id="title" class="text-center">
+  <h2 id="title" class="text-right">
     Hi <%= link_to current_user.username, user_path(current_user) %>.
     <%= image_tag current_user.avatar.url(:thumb), id: 'user-pic' %>
   </h2>
 
-
+  <div class="sub-nav">
+      <a href="#" class="select-posts active">PokéPostz</a>
+      <a href="#" class="select-categories">PokéPalz</a>
+  </div>
 
   <%= render 'posts/form' %>
 
