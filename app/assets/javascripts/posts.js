@@ -11,6 +11,8 @@ PrivatePub.subscribe('/live-feed', function(data, channel){
 
 
 $( document ).ready(function() {
+  $('.best_in_place').best_in_place();
+
   if ( $('.pagination').length ){
     $(window).scroll(function(){
       url = $('.pagination .next_page').attr('href')

@@ -1,12 +1,11 @@
-$('#sign-in-button').fadeOut();
-
-// Toggle sign up if necessary
-$('#new_user').fadeOut(function(){
-  $(this).remove();
-  $('#sign-up-button').fadeIn();
+$('#sign-in-button').fadeOut(function(){
+  $(this).replaceWith('<%= j render "users/new_button" %>')
 });
 
-$('<%= j render "form" %>')
-  .insertAfter('#title')
-  .hide()
-  .fadeIn();
+$('#new_user').replaceWith('<%= j render "sessions/form" %>');
+
+$('h3, input.btn').each(function(){
+  $(this).hide().fadeIn()
+});
+
+$('#sign-up-button').fadeIn();

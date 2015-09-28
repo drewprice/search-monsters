@@ -1,11 +1,12 @@
 class SessionsController < ApplicationController
 
-  def index
-    @posts = Post.all_for(params[:page])
-  end
-
   def new
     @user = User.new
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create

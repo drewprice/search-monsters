@@ -1,15 +1,21 @@
-<td>
-  <%= image_tag post.user.avatar.url(:post) %>
-</td>
-<td>
-  <%= link_to "#{post.user.username}", user_path(post.user) %>:
-</td>
-<td>
-  <span class="post-body"><%= best_in_place post, :body %></span> EDIT ME
-</td>
-<td>
-  <%= time_ago_in_words post.created_at %> ago
-</td>
-<td>
-  <%= link_to "Delete", destroy_post_path(post), method: 'delete', class: "btn btn-default", remote: true %>
-</td>
+<div class="post-preview col-xs-10  no-gutter">
+    <p class="private-post-body"><%= best_in_place post, :body %></p>
+
+    <p class="meta">
+      <%= link_to "#{post.user.username}", user_path(post.user) %>
+
+      <i class="link-spacer"></i>
+
+      <%= time_ago_in_words post.created_at %> ago
+
+      <i class="link-spacer"></i>
+
+      <%= link_to destroy_post_path(post), method: 'delete', remote: true do %>
+        <i class="fa fa-trash-o"></i>
+      <% end %>
+    </p>
+</div>
+
+<div class=" col-xs-2  no-gutter">
+    <%= image_tag post.user.avatar.url(:post), class: "user-icon", alt: "user-image" %>
+</div>

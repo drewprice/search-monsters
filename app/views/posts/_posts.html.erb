@@ -1,0 +1,2 @@
+<%= render posts.sort_by(&:created_at).reverse %>
+<%= will_paginate posts, previous_label: h("<"), next_label: h(">") %>

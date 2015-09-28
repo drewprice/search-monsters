@@ -49,10 +49,9 @@ class UsersController < ApplicationController
     # TODO: refactor
     if current_user
       @user = current_user
-      @array = @user.following.map(&:id)
-      @array << @user.id
-      @posts = Post.reorder('created_at DESC').where(user_id: @array).page(params[:page]).per_page(Post::POSTS_PER_PAGE)
-      render 'sessions/index'
+      @users_followers = @user.following.map(&:id)
+      @users_followers << @user.id
+      @posts = Post.reorder('created_at DESC').where(user_id: @users_followers).page(params[:page]).per_page(Post::POSTS_PER_PAGE)
     else
       redirect_to root_path
     end
