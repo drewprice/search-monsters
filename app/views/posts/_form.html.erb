@@ -1,4 +1,9 @@
 <%= form_for Post.new, remote: true do |f| %>
-  <%= f.text_field :body %>
-  <%= f.submit %>
+  <div class="input-group">
+    <%= f.label :body, 'Say something...' %>
+    <%= f.text_field :body, class: 'form-control' %>
+    <div class="input-group-btn">
+      <%= f.submit class: 'btn btn-default', id: 'create-post' %>
+    </div>
+  </div>
 <% end %>

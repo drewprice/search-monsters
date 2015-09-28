@@ -133,3 +133,94 @@ overflow: hidden;
   margin: 0 10px 0 10px;
   border-radius: 100%;
 }
+
+.post .post-preview p {
+  margin-bottom: 10px;
+}
+
+.post .post-preview p.meta {
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+
+.post {
+  padding: 30px 0 5px 0;
+}
+
+.best_in_place {
+  font-weight: 100;
+  color: #333337;
+  border: solid 0px transparent;
+}
+
+.best_in_place:hover, .best_in_place:active {
+  cursor: pointer;
+  box-shadow: none;
+  border-bottom: solid 3px;
+  border-radius: 0;
+  padding: 5px 0;
+  background-color: #fff;
+  resize: vertical;
+}
+
+.best_in_place:focus {
+  outline: none;
+}
+
+input:focus {
+  outline: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+a.pokeball-switch {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.pokeball-switch:hover {
+  text-decoration: none;
+}
+
+img#user-pic {
+  border-radius: 100%;
+}
+
+#create-post, #search-btn {
+  margin: 0  0 -37px 0;
+  border-width: 3px;
+  border-color: #555555;
+}
+
+#post_body, #query {
+  background: transparent;
+  font-size: 19px;
+  font-size: 1.9rem;
+  padding: 10px 0;
+}
+
+#search-btn {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: #fefefe;
+}
+
+#query {
+  color: #fefefe;
+}
+
+#suggestion-title {
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+
+.goodPlayer, .badPlayer {
+  margin-top: -5px;
+}
+
+.goodPlayer a, .badPlayer a {
+  color: rgba(254, 254, 254, 0.5);
+  border: none;
+  font-size: 15px;
+  font-size: 1.5rem;
+}

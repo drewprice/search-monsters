@@ -2,10 +2,10 @@ $('#sign-in-button').fadeOut(function(){
   $(this).replaceWith('<%= j render "users/new_button" %>')
 });
 
-$('#new_user').fadeOut(function(){
-  $(this).replaceWith('<%= j render "sessions/form" %>');
+$('#new_user').replaceWith('<%= j render "sessions/form" %>');
 
-  $('#new_user').hide().fadeIn();
-
-  $('#sign-up-button').fadeIn();
+$('h3, input.btn').each(function(){
+  $(this).hide().fadeIn()
 });
+
+$('#sign-up-button').fadeIn();

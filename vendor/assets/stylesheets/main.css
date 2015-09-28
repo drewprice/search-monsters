@@ -979,7 +979,7 @@ ol li {
 }
 /* line 36, ../sass/partials/_sidebar.sass */
 .sidebar .site-info h1 {
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  /*text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);*/
   letter-spacing: -2pt;
   margin-bottom: 0;
 }
@@ -1108,14 +1108,14 @@ ol li {
   color: #b6b6b6;
 }
 /* line 52, ../sass/partials/_main-content.sass */
-.post .post-preview p {
+.post .post-preview p, span.best_in_place {
   font-family: "Droid Serif", serif;
   font-size: 16px;
   font-size: 1.6rem;
 }
 @media (min-width: 992px) {
   /* line 52, ../sass/partials/_main-content.sass */
-  .post .post-preview p {
+  .post .post-preview p, span.best_in_place {
     font-size: 18px;
     font-size: 1.8rem;
   }

@@ -1,11 +1,15 @@
-<div class="goodPlayer">
+<div class="goodPlayer pull-right">
   <audio id="player" src="/media/PokemonTVThemeSongFull.mp3"></audio>
   <img onclick="playPause()" src="/images/pokeball.png" alt="Pokemon Logo" id="pokelogo" height="50px;" width="50px;" class: "img-responsive poke_logo_image">
-  <a id="bad" style="cursor: pointer;">GO bad guy!</a>
+  <a id="bad" class="pokeball-switch">
+    <i class="fa fa-rocket"></i>
+  </a>
 </div>
 
-<div class="badPlayer" style="display: none;">
+<div class="badPlayer pull-right" style="display: none;">
   <audio id="player2" src="/media/TeamRocketThemeSong.mp3"></audio>
   <img onclick="playPause2()" src="/images/team_rocket_pokeball.png" alt="Pokemon Logo" id="pokelogo" height="50px;" width="50px;" class: "img-responsive poke_logo_image">
-  <a id="good" style="cursor: pointer;">GO good guy!</a>
+    <a id="good" class="pokeball-switch">
+    <i class="fa fa-heart"></i>
+  </a>
 </div>
