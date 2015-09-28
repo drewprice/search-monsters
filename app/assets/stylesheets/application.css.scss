@@ -133,3 +133,64 @@ overflow: hidden;
   margin: 0 10px 0 10px;
   border-radius: 100%;
 }
+
+.post .post-preview p.meta {
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+
+.post .post-preview p {
+  margin-bottom: 0;
+}
+
+.article {
+  padding: 15px 0;
+}
+
+.best_in_place {
+  font-weight: 100;
+  color: #333337;
+  border: solid 0px transparent;
+}
+
+.best_in_place:hover, .best_in_place:active {
+  cursor: pointer;
+  box-shadow: none;
+  border-bottom: solid 3px;
+  border-radius: 0;
+  padding: 5px 0;
+  background-color: #fff;
+  resize: vertical;
+}
+
+.best_in_place:focus {
+  outline: none;
+}
+
+input:focus {
+  outline: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+a.pokeball-switch {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.pokeball-switch:hover {
+  text-decoration: none;
+}
+
+img#user-pic {
+  border-radius: 100%;
+}
+
+#create-post {
+  margin: 0;
+}
+
+#post_body {
+  padding: 10px 0;
+}
