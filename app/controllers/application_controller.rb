@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :user_signed_in?, :get_suggestions
+  helper_method :current_user, :user_signed_in?
   before_action :generate_suggestions
+
+  private
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -11,7 +13,10 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  private
+  def authenticate_user
+    return if user_signed_in?
+    redirect_to signup_path, alert: "You must be logged in to do that!"
+  end
 
   def generate_suggestions
     current_user.suggest if user_signed_in?

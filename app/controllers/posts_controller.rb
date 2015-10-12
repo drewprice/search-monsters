@@ -1,13 +1,9 @@
 class PostsController < ApplicationController
   before_action :assign_post, only: [:edit, :destroy, :update]
+  before_action :authenticate_user
 
   def index
-    if user_signed_in?
-      @posts = Post.all_for(params[:page])
-      @timeline_posts = current_user.timeline_posts(params[:page])
-    else
-      redirect_to sign_in_path
-    end
+    @posts = Post.all_for(params[:page])
   end
 
   def create

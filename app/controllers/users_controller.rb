@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :update, :edit, :followers, :following]
+  before_action :set_user, only: [:show, :update, :edit, :followers, :following]
 
   def index
     if params[:query].present?
@@ -11,9 +11,6 @@ class UsersController < ApplicationController
 
   def show
     @posts = Post.reorder('created_at DESC').where(user_id: @user.id).page(params[:page]).per_page(Post::POSTS_PER_PAGE)
-  rescue
-    flash[:notice] = 'Sorry, that user does not exist!'
-    redirect_to root_path
   end
 
   def new
@@ -46,15 +43,8 @@ class UsersController < ApplicationController
   end
 
   def timeline
-    # TODO: refactor
-    if current_user
-      @user = current_user
-      @users_followers = @user.following.map(&:id)
-      @users_followers << @user.id
-      @posts = Post.reorder('created_at DESC').where(user_id: @users_followers).page(params[:page]).per_page(Post::POSTS_PER_PAGE)
-    else
-      redirect_to root_path
-    end
+    timeline_users = current_user.following_ids + [current_user.id]
+    @posts = Post.reorder('created_at DESC').where(user_id: timeline_users).page(params[:page]).per_page(Post::POSTS_PER_PAGE)
   end
 
   def autocomplete
@@ -68,7 +58,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :password, :username, :bio, :avatar)
   end
 
-  def find_user
+  def set_user
     @user = User.find(params[:id])
   end
 end

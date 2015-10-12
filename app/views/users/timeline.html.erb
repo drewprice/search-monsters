@@ -7,14 +7,14 @@
   </h2>
 
   <div class="sub-nav">
-    <%= link_to "PokéPostz", posts_path, class: "select-posts active" %>
-    <%= link_to "PokéPalz", timeline_path, class: "select-categories" %>
+    <%= link_to "PokéPostz", posts_path, class: "select-posts" %>
+    <%= link_to "PokéPalz", timeline_path, class: "select-categories active" %>
   </div>
 
   <%= render 'posts/form' %>
 
   <div id="posts" class="home-page-posts animated fadeIn ">
     <%= render @posts.sort_by(&:created_at).reverse %>
+    <%= will_paginate @posts, previous_label: h("<"), next_label: h(">") %>
   </div>
-  <%= will_paginate @posts %>
 </section><!-- main content -->
