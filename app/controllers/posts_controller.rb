@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :assign_post, only: [:edit, :destroy, :update]
+  before_action :set_post, only: [:edit, :destroy, :update]
   before_action :authenticate_user
 
   def index
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:body)
   end
 
-  def assign_post
+  def set_post
     @post = Post.find(params[:id])
   end
 end

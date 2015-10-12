@@ -10,7 +10,7 @@
 
       <i class="link-spacer"></i>
 
-      <%= link_to destroy_post_path(post), method: 'delete', remote: true do %>
+      <%= link_to post_path(post), method: 'delete', remote: true do %>
         <i class="fa fa-trash-o"></i>
       <% end %>
     </p>

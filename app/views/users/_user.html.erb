@@ -1,0 +1,17 @@
+<div class="post-preview col-xs-10  no-gutter">
+    <p class="public-post-body">
+      <%= link_to user.username, user_path(user) %>
+    </p>
+    <% if user.posts.last %>
+      <p class="meta">
+        <%= user.posts.last.body %>
+      </p>
+      <p class="meta">
+        <%= time_ago_in_words user.posts.last.created_at %> ago
+      </p>
+    <% end %>
+</div>
+
+<div class="col-xs-2  no-gutter">
+    <%= image_tag user.avatar.url(:post), class: "user-icon", alt: "user-image" %>
+</div>

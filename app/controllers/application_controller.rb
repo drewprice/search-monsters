@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user
     return if user_signed_in?
-    redirect_to signup_path, alert: "You must be logged in to do that!"
+    redirect_to sign_in_path, alert: "You must be logged in to do that!"
   end
 
   def generate_suggestions

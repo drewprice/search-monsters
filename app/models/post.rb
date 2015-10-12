@@ -6,6 +6,7 @@ class Post < ActiveRecord::Base
   validates :body, presence: true
 
   def self.all_for(page)
+    page ||= "1"
     reorder('created_at DESC').page(page).per_page(POSTS_PER_PAGE)
   end
 end

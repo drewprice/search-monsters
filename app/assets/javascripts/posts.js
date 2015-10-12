@@ -16,7 +16,6 @@ $(document).ready(function() {
   if ($('.pagination').length) {
     $(window).scroll(function() {
       var url = $('.pagination .next_page').attr('href')
-
       if (url && ($(window).scrollTop() > $(document).height() - $(window).height() - 50)) {
         alert('yeeeees!');
         $('.pagination').html('<p class="loading">Fetching more pokestuff</p>')
