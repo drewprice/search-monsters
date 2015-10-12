@@ -1008,7 +1008,7 @@ ol li {
 }
 /* line 55, ../sass/partials/_sidebar.sass */
 .sidebar .site-info .primary-info {
-  border-bottom: solid 1px rgba(255, 255, 255, 0.3);
+  /*border-bottom: solid 1px rgba(255, 255, 255, 0.3);*/
 }
 /* line 58, ../sass/partials/_sidebar.sass */
 .sidebar .site-info .primary-info a {
