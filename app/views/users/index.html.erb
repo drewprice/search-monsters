@@ -1,18 +1,14 @@
 <section class="col-md-7 col-sm-12 col-md-offset-5 main-content">
-  <h2 class="text-right" id="title">
-    Hi
-    <%= link_to current_user.username, user_path(current_user) %>
-    <%= image_tag current_user.avatar.url(:thumb), id: 'user-pic' %>
-  </h2>
-
-  <% if @users.any? %>
-    <%= render @users %>
-  <% else %>
-    <div class="post-preview col-xs-10  no-gutter">
+  <div id="posts" class="home-page-posts animated fadeIn ">
+    <% if @users.any? %>
+        <%= render @users %>
+    <% else %>
+      <div class="post-preview col-xs-10  no-gutter">
         <p class="user">
           Sooooorrrrry. No matches found!
         </p>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
+  </div>
 </section>
 <!-- main content -->
